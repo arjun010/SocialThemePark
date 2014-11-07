@@ -1,0 +1,14 @@
+[
+{
+"count": 104, 
+"sentiment": "Positive"
+}, 
+{
+"count": 3, 
+"sentiment": "Negative"
+}, 
+{
+"count": 55, 
+"sentiment": "Neutral"
+}
+]
