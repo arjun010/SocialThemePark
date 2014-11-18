@@ -1,6 +1,6 @@
 [
 {
-"count": 52, 
+"count": 49, 
 "sentiment": "Positive"
 }, 
 {
@@ -8,7 +8,7 @@
 "sentiment": "Negative"
 }, 
 {
-"count": 35, 
+"count": 21, 
 "sentiment": "Neutral"
 }
 ]

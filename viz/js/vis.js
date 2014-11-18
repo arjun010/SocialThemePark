@@ -1,9 +1,106 @@
 var Bubbles, root, texts;
+texts = [
+  {
+    key: "batman",
+    file: "batman.csv",
+    name: "Batman"
+  }, {
+    key: "goliath",
+    file: "goliath.csv",
+    name: "Goliath"
+  }, {
+    key: "sevendwarfsminetrain",
+    file: "sevendwarfsminetrain.csv",
+    name: "Seven Dwarfs Mine Train"
+  }, {
+    key: "spacemountain",
+    file: "spacemountain.csv",
+    name: "Space Mountain"
+  }, {
+    key: "hulkride",
+    file: "hulkride.csv",
+    name: "Hulk Ride"
+  }
+];
+
+
+var tweetsSDMT = (function() {
+        var json = null;
+        $.ajax({
+            'async': false,
+            'global': false,
+            'url': "../newSearch/sevendwarfsminetrain.json",
+            'dataType': "json",
+            'success': function (data) {
+                json = data;
+            }
+        });
+        return json;
+    })();
+
+var tweetsSpaceMountain = (function() {
+        var json = null;
+        $.ajax({
+            'async': false,
+            'global': false,
+            'url': "../newSearch/spacemountain.json",
+            'dataType': "json",
+            'success': function (data) {
+                json = data;
+            }
+        });
+        return json;
+    })();
+
+var tweetsGoliath = (function() {
+        var json = null;
+        $.ajax({
+            'async': false,
+            'global': false,
+            'url': "../newSearch/goliath.json",
+            'dataType': "json",
+            'success': function (data) {
+                json = data;
+            }
+        });
+        return json;
+    })();
+
+var tweetsBatman = (function() {
+        var json = null;
+        $.ajax({
+            'async': false,
+            'global': false,
+            'url': "../newSearch/batman.json",
+            'dataType': "json",
+            'success': function (data) {
+                json = data;
+            }
+        });
+        return json;
+    })();
+
+var tweetsHulkRide = (function() {
+        var json = null;
+        $.ajax({
+            'async': false,
+            'global': false,
+            'url': "../newSearch/hulkride.json",
+            'dataType': "json",
+            'success': function (data) {
+                json = data;
+            }
+        });
+        return json;
+    })();
+
+
+
 root = typeof exports !== "undefined" && exports !== null ? exports : this;
 Bubbles = function() {
   var chart, clear, click, collide, collisionPadding, connectEvents, data, force, gravity, hashchange, height, idValue, jitter, label, margin, maxRadius, minCollisionRadius, mouseout, mouseover, node, rScale, rValue, textValue, tick, transformData, update, updateActive, updateLabels, updateNodes, width;
-  width = 980;
-  height = 510;
+  width = 1200;
+  height = 700;
   data = [];
   node = null;
   label = null;
@@ -175,8 +272,32 @@ Bubbles = function() {
       return id === idValue(d);
     });
     if (id.length > 0) {
+      key = decodeURIComponent(location.search).replace("?", "");
+      key = key.replace("/","")
+      //console.log(key);  
+      var curRideTweets;
+      if(key=="sevendwarfsminetrain"){
+        curRideTweets=tweetsSDMT;
+      }else if(key=="goliath"){
+        curRideTweets=tweetsGoliath;
+      }else if(key=="batman"){
+        curRideTweets=tweetsBatman;
+      }else if(key=="spacemountain"){
+        curRideTweets=tweetsSpaceMountain;
+      }else if(key=="hulkride"){
+        curRideTweets=tweetsHulkRide;
+      }
+      
+
+      for (var i =0; i<curRideTweets.length; i++){
+        if(curRideTweets[i]['tweet'].toLowerCase().indexOf(id) > -1){
+          console.log(curRideTweets[i]['tweet']);
+          $('#tweetsList').prepend('<p class="tweet">'+curRideTweets[i]['tweet']+'</p>');
+        }
+      }
       return d3.select("#status").html("<h3>The word <span class=\"active\">" + id + "</span> is now active</h3>");
     } else {
+      $(".tweet").remove();
       return d3.select("#status").html("<h3>No word is active</h3>");
     }
   };
@@ -222,29 +343,7 @@ Bubbles = function() {
 root.plotData = function(selector, data, plot) {
   return d3.select(selector).datum(data).call(plot);
 };
-texts = [
-  {
-    key: "batman",
-    file: "batman.csv",
-    name: "Batman"
-  }, {
-    key: "goliath",
-    file: "goliath.csv",
-    name: "Goliath"
-  }, {
-    key: "sevendwarfsminetrain",
-    file: "sevendwarfsminetrain.csv",
-    name: "Seven Dwarfs Mine Train"
-  }, {
-    key: "spacemountain",
-    file: "spacemountain.csv",
-    name: "Space Mountain"
-  }, {
-    key: "hulkride",
-    file: "hulkride.csv",
-    name: "Hulk Ride"
-  }
-];
+
 $(function() {
   var display, key, plot, text;
   plot = Bubbles();
@@ -253,17 +352,17 @@ $(function() {
   };
   key = decodeURIComponent(location.search).replace("?", "");
   key = key.replace("/","")
-  console.log(key);  
+  //console.log(key);  
   text = texts.filter(function(t) {
     return t.key === key;
   })[0];
 
-  console.log(text);
+  //console.log(text);
 
   if (!text) {
     text = texts[0];
   }
-  console.log(text);
+  //console.log(text);
   $("#text-select").val(key);
 
   d3.select("#jitter").on("input", function() {

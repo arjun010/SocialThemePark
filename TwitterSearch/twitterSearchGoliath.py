@@ -62,7 +62,7 @@ api = twitter.Api(consumer_key='CPoIzcJdlC9w48HJLASiCWfIm',
 
 search = api.GetSearch(term='goliath six flags', lang='en', count=6000, max_id='')
 #print(search)
-
+tempArr = []
 opt = open("goliath.txt",'a')
 for t in search:
   if re.search("^(?!RT)",t.text.encode('utf-8')):
@@ -70,6 +70,8 @@ for t in search:
     #Add the .encode to force encoding
     print t.text.encode('utf-8')
     print ''
-    opt.write(t.text.encode('utf-8')+"\n")
+    tempArr.append(t.id)
+    #opt.write(t.text.encode('utf-8')+"\n")
   
 opt.close()
+print(max(tempArr))

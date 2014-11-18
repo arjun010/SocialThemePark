@@ -60,16 +60,25 @@ api = twitter.Api(consumer_key='CPoIzcJdlC9w48HJLASiCWfIm',
                       access_token_key='524026726-PFL8kV3zUPpPZqRNB1J1xAZSUOv0JNfA6ZoPaL2V',
                       access_token_secret='3CQxz91tTSrqb2DN0OGDewlAzeqxMxVwCkbga7ayQBEmt')
 
-search = api.GetSearch(term='batman six flags', lang='en', count=6000, max_id='')
-#print(search)
 
+search = api.GetSearch(term='batman six flags',result_type='mixed',lang='en', count=6000)#geocode='33.767475,-84.548650,50000mi'
+#print(search)
+tempArr = []
 opt = open("batman.txt",'a')
 for t in search:
   if re.search("^(?!RT)",t.text.encode('utf-8')):
     print t.user.screen_name + ' (' + t.created_at + ')'
     #Add the .encode to force encoding
+    tempArr.append(t.id)
     print t.text.encode('utf-8')
-    print ''
-    opt.write(t.text.encode('utf-8')+"\n")
+    print '----------------'
+    #opt.write(t.text.encode('utf-8')+"\n")
   
+  """
+  print t.user.screen_name + ' (' + t.created_at + ')'
+  print t.id
+  print t.text.encode('utf-8')
+  print '----------------'
+  """
 opt.close()
+print(max(tempArr))

@@ -1,14 +1,14 @@
 [
 {
-"count": 53, 
+"count": 30, 
 "sentiment": "Positive"
 }, 
 {
-"count": 2, 
+"count": 1, 
 "sentiment": "Negative"
 }, 
 {
-"count": 26, 
+"count": 19, 
 "sentiment": "Neutral"
 }
 ]

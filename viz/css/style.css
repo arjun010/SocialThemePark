@@ -8,7 +8,7 @@ a, a:visited {
 
 #container {
   padding-top:20px;
-  width: 980px;
+  width: 100%;
   border-left: 2px #ddd solid;
   border-right: 2px #ddd solid;
 }

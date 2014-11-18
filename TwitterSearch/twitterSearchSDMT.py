@@ -62,14 +62,16 @@ api = twitter.Api(consumer_key='CPoIzcJdlC9w48HJLASiCWfIm',
 
 search = api.GetSearch(term='seven dwarfs mine train', lang='en', count=6000, max_id='')
 #print(search)
-
+tempArr = []
 opt = open("sevendwarfsminetrain.txt",'a')
 for t in search:
   if re.search("^(?!RT)",t.text.encode('utf-8')):
     print t.user.screen_name + ' (' + t.created_at + ')'
     #Add the .encode to force encoding
+    tempArr.append(t.id)
     print t.text.encode('utf-8')
     print ''
-    opt.write(t.text.encode('utf-8')+"\n")
+    #opt.write(t.text.encode('utf-8')+"\n")
   
 opt.close()
+print(max(tempArr))

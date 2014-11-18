@@ -8,12 +8,18 @@ from collections import OrderedDict
 
 def createWordCountFile():
     cachedStopWords = stopwords.words("english")
-    words = re.findall('\w+', open('../TwitterSearch/batman.txt').read().lower())
+    unImportantWords = []
+    for x in ['batman','six','flags','http','https','com','co','sixflags','sixflag','ride','rt']:
+        unImportantWords.append(x)    
+
+    print(unImportantWords)
+    words = re.findall('\w+', open('../newSearch/batman.txt').read().lower())
     opt = open('batman_WordCount.txt','w')
     c = collections.Counter(words)
     for word in words:
         if word not in cachedStopWords:
-            opt.write('%s : %d\n' % (word, c[word]))
+            if word not in unImportantWords:
+                opt.write('%s : %d\n' % (word, c[word]))
 
     opt.close()
 

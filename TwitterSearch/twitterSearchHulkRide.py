@@ -60,16 +60,17 @@ api = twitter.Api(consumer_key='CPoIzcJdlC9w48HJLASiCWfIm',
                       access_token_key='524026726-PFL8kV3zUPpPZqRNB1J1xAZSUOv0JNfA6ZoPaL2V',
                       access_token_secret='3CQxz91tTSrqb2DN0OGDewlAzeqxMxVwCkbga7ayQBEmt')
 
-search = api.GetSearch(term='hulk ride', lang='en', count=6000, max_id='')
+search = api.GetSearch(term='hulk ride', lang='en', count=6000)#since_id='527859186131300351'
 #print(search)
-
+tempArr=[]
 opt = open("hulkride.txt",'a')
 for t in search:
   if re.search("^(?!RT)",t.text.encode('utf-8')):
     print t.user.screen_name + ' (' + t.created_at + ')'
     #Add the .encode to force encoding
     print t.text.encode('utf-8')
+    tempArr.append(t.id)
     print ''
-    opt.write(t.text.encode('utf-8')+"\n")
-  
+    #opt.write(t.text.encode('utf-8')+"\n")
 opt.close()
+print(max(tempArr))

@@ -8,12 +8,18 @@ import json
 
 def createWordCountFile():
     cachedStopWords = stopwords.words("english")
-    words = re.findall('\w+', open('../TwitterSearch/spacemountain.txt').read().lower())
+    words = re.findall('\w+', open('../newSearch/spacemountain.txt').read().lower())
+
+    unImportantWords = []
+    for x in ['space','mountain','http','https','com','co','ride','disneyland','orlando','rt','florida','fl','disney','disneyworld','walt','waltdisneyworld','world','kingdom','lake','buena','vista']:
+        unImportantWords.append(x)
+
     opt = open('spacemountain_WordCount.txt','w')
     c = collections.Counter(words)
     for word in words:
         if word not in cachedStopWords:
-            opt.write('%s : %d\n' % (word, c[word]))
+            if word not in unImportantWords:
+                opt.write('%s : %d\n' % (word, c[word]))
 
     opt.close()
 

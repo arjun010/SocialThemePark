@@ -8,12 +8,18 @@ from collections import OrderedDict
 
 def createWordCountFile():
     cachedStopWords = stopwords.words("english")
-    words = re.findall('\w+', open('../TwitterSearch/goliath.txt').read().lower())
+    words = re.findall('\w+', open('../newSearch/goliath.txt').read().lower())
+
+    unImportantWords = []
+    for x in ['goliath','six','flags','http','https','com','co','sixflags','sixflag','ride','rt']:
+        unImportantWords.append(x) 
+
     opt = open('goliath_WordCount.txt','w')
     c = collections.Counter(words)
     for word in words:
         if word not in cachedStopWords:
-            opt.write('%s : %d\n' % (word, c[word]))
+            if word not in unImportantWords:
+                opt.write('%s : %d\n' % (word, c[word]))
 
     opt.close()
 
