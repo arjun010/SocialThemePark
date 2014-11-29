@@ -12,14 +12,23 @@ def createWordCountFile():
     for x in ['batman','six','flags','http','https','com','co','sixflags','sixflag','ride','rt']:
         unImportantWords.append(x)    
 
-    print(unImportantWords)
+
+    moodWords = []
+    moodWordsFile = open("moodwords.txt","r")
+    allMoodWords = moodWordsFile.readlines()
+    moodWordsFile.close()
+    for word in allMoodWords:
+        moodWords.append(re.sub("\n","",word))
+
+    #print(unImportantWords)
     words = re.findall('\w+', open('../newSearch/batman.txt').read().lower())
     opt = open('batman_WordCount.txt','w')
     c = collections.Counter(words)
     for word in words:
         if word not in cachedStopWords:
             if word not in unImportantWords:
-                opt.write('%s : %d\n' % (word, c[word]))
+                if word in moodWords:
+                    opt.write('%s : %d\n' % (word, c[word]))
 
     opt.close()
 

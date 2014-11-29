@@ -10,6 +10,16 @@ def createWordCountFile():
     cachedStopWords = stopwords.words("english")
     words = re.findall('\w+', open('../newSearch/spacemountain.txt').read().lower())
 
+
+    moodWords = []
+    moodWordsFile = open("moodwords.txt","r")
+    allMoodWords = moodWordsFile.readlines()
+    moodWordsFile.close()
+    for word in allMoodWords:
+        moodWords.append(re.sub("\n","",word))
+
+    
+
     unImportantWords = []
     for x in ['space','mountain','http','https','com','co','ride','disneyland','orlando','rt','florida','fl','disney','disneyworld','walt','waltdisneyworld','world','kingdom','lake','buena','vista']:
         unImportantWords.append(x)
@@ -19,7 +29,8 @@ def createWordCountFile():
     for word in words:
         if word not in cachedStopWords:
             if word not in unImportantWords:
-                opt.write('%s : %d\n' % (word, c[word]))
+                if word in moodWords:
+                    opt.write('%s : %d\n' % (word, c[word]))
 
     opt.close()
 

@@ -288,7 +288,7 @@ Bubbles = function() {
         curRideTweets=tweetsHulkRide;
       }
       
-
+      $("#tweetsList").empty();
       for (var i =0; i<curRideTweets.length; i++){
         if(curRideTweets[i]['tweet'].toLowerCase().indexOf(id) > -1){
           console.log(curRideTweets[i]['tweet']);

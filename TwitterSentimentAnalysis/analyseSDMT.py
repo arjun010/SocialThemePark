@@ -10,6 +10,16 @@ def createWordCountFile():
     cachedStopWords = stopwords.words("english")
     words = re.findall('\w+', open('../newSearch/sevendwarfsminetrain.txt').read().lower())
     unImportantWords = []
+
+    moodWords = []
+    moodWordsFile = open("moodwords.txt","r")
+    allMoodWords = moodWordsFile.readlines()
+    moodWordsFile.close()
+    for word in allMoodWords:
+        moodWords.append(re.sub("\n","",word))
+
+    #print(moodWords)
+
     for x in ['sevendwarfsminetrain','seven','dwarfs','dwarf','mine','train','https','com','co','disney','disneyworld','ride','rt','orlando','walt','waltdisneyworld','http','world','kingdom','lake','buena','vista','florida','fl']:
         unImportantWords.append(x)    
 
@@ -19,7 +29,8 @@ def createWordCountFile():
     for word in words:
         if word not in cachedStopWords:
             if word not in unImportantWords:
-                opt.write('%s : %d\n' % (word, c[word]))
+                if word in moodWords:
+                    opt.write('%s : %d\n' % (word, c[word]))
 
     opt.close()
 

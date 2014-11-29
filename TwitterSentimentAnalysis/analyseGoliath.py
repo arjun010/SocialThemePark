@@ -10,6 +10,14 @@ def createWordCountFile():
     cachedStopWords = stopwords.words("english")
     words = re.findall('\w+', open('../newSearch/goliath.txt').read().lower())
 
+    moodWords = []
+    moodWordsFile = open("moodwords.txt","r")
+    allMoodWords = moodWordsFile.readlines()
+    moodWordsFile.close()
+    for word in allMoodWords:
+        moodWords.append(re.sub("\n","",word))
+
+
     unImportantWords = []
     for x in ['goliath','six','flags','http','https','com','co','sixflags','sixflag','ride','rt']:
         unImportantWords.append(x) 
@@ -19,7 +27,8 @@ def createWordCountFile():
     for word in words:
         if word not in cachedStopWords:
             if word not in unImportantWords:
-                opt.write('%s : %d\n' % (word, c[word]))
+                if word in moodWords:
+                    opt.write('%s : %d\n' % (word, c[word]))
 
     opt.close()
 

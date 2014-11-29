@@ -8,7 +8,7 @@ api = twitter.Api(consumer_key='CPoIzcJdlC9w48HJLASiCWfIm',
                       access_token_key='524026726-PFL8kV3zUPpPZqRNB1J1xAZSUOv0JNfA6ZoPaL2V',
                       access_token_secret='3CQxz91tTSrqb2DN0OGDewlAzeqxMxVwCkbga7ayQBEmt')
 
-search = api.GetSearch(term='space mountain',result_type='mixed', lang='en', count=200, since_id='532559731512967168')
+search = api.GetSearch(term='space mountain',result_type='mixed', lang='en', count=200, since_id='538364268492886016')
 tempArr = []
 alreadySeen = []
 jsonTweets = []
