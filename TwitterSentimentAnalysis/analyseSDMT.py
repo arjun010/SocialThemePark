@@ -85,16 +85,16 @@ def main():
     # We load in the list of words and their log probabilities
     happy_log_probs, sad_log_probs = readSentimentList('twitter_sentiment_list.csv')
 
-    inp = open('../TwitterSearch/sevendwarfsminetrain.txt','r')
-    tweets = inp.readlines()
+    inp = open('../newSearch/sevendwarfsminetrain.json','r')
+    tweets = json.load(inp)
     inp.close()
-
+    
     countPos = 0
     countNeg = 0
     countNeut = 0
 
     for tweet in tweets:
-        curTweet = tweet.split()
+        curTweet = tweet['tweet'].split()
         tweet_happy_prob, tweet_sad_prob = classifySentiment(curTweet, happy_log_probs, sad_log_probs)       
         #print "The probability that tweet1 (", tweet, ") is happy is ", tweet_happy_prob, "and the probability that it is sad is ", tweet_sad_prob    
         if tweet_happy_prob>tweet_sad_prob:

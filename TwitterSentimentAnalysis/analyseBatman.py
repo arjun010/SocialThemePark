@@ -83,16 +83,16 @@ def main():
     # We load in the list of words and their log probabilities
     happy_log_probs, sad_log_probs = readSentimentList('twitter_sentiment_list.csv')
 
-    inp = open('../TwitterSearch/batman.txt','r')
-    tweets = inp.readlines()
+    inp = open('../newSearch/batman.json','r')
+    tweets = json.load(inp)
     inp.close()
-
+    
     countPos = 0
     countNeg = 0
     countNeut = 0
 
     for tweet in tweets:
-        curTweet = tweet.split()
+        curTweet = tweet['tweet'].split()
         tweet_happy_prob, tweet_sad_prob = classifySentiment(curTweet, happy_log_probs, sad_log_probs)       
         #print "The probability that tweet1 (", tweet, ") is happy is ", tweet_happy_prob, "and the probability that it is sad is ", tweet_sad_prob    
         if tweet_happy_prob>tweet_sad_prob:
@@ -101,16 +101,21 @@ def main():
             countNeg+=1
         else:
             countNeut+=1
+        
 
     #print("Positive: ", countPos, " Negative: ", countNeg, " Neutral: ", countNeut)
     opt=[]
     opt.append({"sentiment":"Positive","count":countPos})
     opt.append({"sentiment":"Negative","count":countNeg})
     opt.append({"sentiment":"Neutral","count":countNeut})
+    
     with open('../SentimentCounts/batman.json', 'w') as outfile:
         json.dump(opt, outfile,indent=0)
     outfile.close()
+    
+
     createWordCountFile()
+    
     # Here we have tweets which we have already tokenized (turned into an array of words)
     #tweet1 = ['I', 'love', 'holidays']
     #tweet2 = ['this','ride','is','boring']
