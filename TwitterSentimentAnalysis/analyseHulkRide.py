@@ -91,16 +91,27 @@ def main():
     countNeg = 0
     countNeut = 0
 
+    posTweetFile=open('../SentimentCounts/hulkridePositiveTweets.json','w')
+    negTweetFile=open('../SentimentCounts/hulkrideNegativeTweets.json','w')
+    neuTweetFile=open('../SentimentCounts/hulkrideNeutralTweets.json','w')
+
     for tweet in tweets:
         curTweet = tweet['tweet'].split()
         tweet_happy_prob, tweet_sad_prob = classifySentiment(curTweet, happy_log_probs, sad_log_probs)       
         #print "The probability that tweet1 (", tweet, ") is happy is ", tweet_happy_prob, "and the probability that it is sad is ", tweet_sad_prob    
         if tweet_happy_prob>tweet_sad_prob:
             countPos+=1
+            posTweetFile.write("{\"tweet\":\""+re.sub("\"","",tweet['tweet'].encode("utf-8"))+"\"},\n")
         elif tweet_sad_prob>tweet_happy_prob:
             countNeg+=1
+            negTweetFile.write("{\"tweet\":\""+re.sub("\"","",tweet['tweet'].encode("utf-8"))+"\"},\n")
         else:
             countNeut+=1
+            neuTweetFile.write("{\"tweet\":\""+re.sub("\"","",tweet['tweet'].encode("utf-8"))+"\"},\n")
+        
+    posTweetFile.close()
+    negTweetFile.close()
+    neuTweetFile.close()
 
     #print("Positive: ", countPos, " Negative: ", countNeg, " Neutral: ", countNeut)
     opt=[]
