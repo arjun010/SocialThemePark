@@ -38,7 +38,7 @@ negative : 6
 negative : 6
 negative : 6
 negative : 6
-heard : 1
+heard : 2
 good : 1
 old : 1
 close : 1
@@ -52,3 +52,6 @@ liked : 4
 giant : 4
 negative : 6
 negative : 6
+huge : 1
+right : 1
+heard : 2
