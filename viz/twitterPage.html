@@ -1,0 +1,72 @@
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width">
+		<link rel="stylesheet" href="css/themePark.css">
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+		<link rel="stylesheet" href="css/style.css">
+
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="js/vis.js"></script>
+		<script src="js/libs/d3.min.js"></script>
+
+
+
+	</head>
+	<body>
+		<div class="mainBackgroundImage">
+		<a href="" class="rideButton" id="hulkride" role="button" data-toggle="modal" data-target="#myCustomModal">
+			<div><img src="ride_1.png" alt="" class="hulkrideImage"></div>
+		</a>
+		<a href="" class="rideButton" id="goliath" role="button" data-toggle="modal" data-target="#myCustomModal">
+			<div><img src="goliath.png" alt="" class="goliathImage"></div>
+		</a>
+		<a href="" class="rideButton" id="batman" role="button" data-toggle="modal" data-target="#myCustomModal">
+			<div><img src="ride_2.png" alt="" class="batmanImage"></div>
+		</a>
+		<a href="" class="rideButton" id="sevendwarfsminetrain" role="button" data-toggle="modal" data-target="#myCustomModal"> 
+			<div><img src="seventrain.png" alt="" class="sevenTrainImage"></div>
+		</a>
+		<a href="" class="rideButton" id="spacemountain" role="button" data-toggle="modal" data-target="#myCustomModal">
+			<div><img src="spacemountain.png" alt="" class="spacemountainImage"></div>
+		</a>
+
+		
+		<div id="myCustomModal" class="modal fade in" tabindex="-1" role="dialog" aria=labelledby="myModalLabel" aria-hidden="false">
+			<script>
+			console.log("Button that called this");
+
+			currentUrl = window.location.search;
+			parentButtonId = currentUrl.split("?")[1].split("/")[0];
+			parentButtonId = parentButtonId.charAt(0).toUpperCase()+parentButtonId.slice(1);
+			</script>
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">
+							<span aria-hidden="true">x</span>
+							<span class="sr-only">Close</span>
+						</button>
+						<h4 class="modal-title"><script>$(".modal-title").text(parentButtonId);</script></h4>
+					</div>
+					<div class="modal-body">
+						<div class="videoDiv">
+							<iframe width="560" height="315" src="//www.youtube.com/embed/Od_c7D2FEoA" frameborder="0" allowfullscreen></iframe>
+						</div>
+						<div class="tweetDiv">
+							<div class="tweetDivTitle">
+								 <script> $(".tweetDivTitle").text("Compose new tweet about " + parentButtonId);</script>
+							</div>
+							<div class="tweetDivTextarea" role="textbox" contenteditable="true" aria-multiline="true"></div>
+							<button class="btn primary-btn tweetBtn" type="button">
+								<span class="tweetText">Tweet</span>
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		</div>
+	</body>
+</html>

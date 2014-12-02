@@ -1,7 +1,21 @@
-
-body {
+.mainBackgroundImage {
+  width: 1440px;
+  height: 100%;
+  /*background-image: url("../map.PNG");*/
 }
+.mainBackgroundImage::after {
+  content: "";
+  background-image: url("../map.PNG");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  opacity: 0.7;
+  position: absolute;
+  left:0;
+  z-index: -1;
+  width: 1440px;
+  height: 100%;
 
+}
 a, a:visited {
   color:#333;
 }
@@ -96,3 +110,85 @@ footer p {
   font: 13px sans-serif;
 }
 
+.hulkrideImage { 
+  width:252px;
+  height:198px;
+  position: absolute;
+  bottom: 190px;
+  right: 340px;
+}
+
+.batmanImage {
+  width:430px;
+  height:225px;
+  position: absolute;
+  bottom: 100px;
+  right:58px;
+}
+
+.goliathImage { 
+  width:252px;
+  height:198px;
+  position: absolute;
+  bottom: 190px;
+  right: 340px;
+}
+
+.spacemountainImage{
+  width:252px;
+  height:198px;
+  position: absolute;
+  bottom: 60px;
+  left: 60px;
+}
+
+.sevenTrainImage { 
+  width:252px;
+  height:198px;
+  position: absolute;
+  top: 90px;
+  left: 60px;
+}
+.sentimentButtons { 
+  text-align: center;
+  padding:20px;
+}
+
+.sentimementButtons a {
+  margin:10px;
+}
+
+.tweetDiv { 
+  margin-top: 20px;
+  padding:10px;
+  background: rgba(47, 194, 239, .1);
+  overflow: hidden;
+}
+
+.tweetBtn {
+  background-color: #2FC2EF;
+  margin-top: 10px;
+  color:white;
+  float: right;
+}
+
+.videoDiv { 
+  width:100%;
+  display: block;
+}
+
+.tweetDivTextarea { 
+border: 1px solid #e1e8ed;
+width:100%;
+padding: 5px;
+background-color: #f6f6f6;
+margin-top: 10px;
+}
+
+.tweetDivTitle { 
+  color: #8899a6;
+  text-align:  center;
+  line-height: 22px;
+  font-size: 15px;
+  border-bottom: solid 1px rgba(47, 194, 239, .25);
+}

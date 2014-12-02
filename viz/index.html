@@ -1,9 +1,807 @@
-<html>
-<head>
-	<title>Social Theme Parks</title>
-</head>
-<body>
-	<a href="pieChart.html">Sentiment Pie Chart</a><br/>
-	<a href="wordBubble.html">Word Frequency Bubble</a>
-</body>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width">
+		<link rel="stylesheet" href="css/themePark.css">
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+		<link rel="stylesheet" href="css/style.css">
+
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="js/vis.js"></script>
+		<script src="js/libs/d3.min.js"></script>
+		<script src="http://code.highcharts.com/highcharts.js"></script>
+		<!-- <script src="http://code.highcharts.com/modules/exporting.js"></script> -->
+
+
+
+	</head>
+	<body>
+		<div class="mainBackgroundImage">
+		
+			<a href="" class="rideButton" id="hulkride" role="button" data-toggle="modal" data-target="#hulkridemodal">
+				<div><img src="ride_1.png" alt="" class="hulkrideImage"></div>
+			</a>
+			<!-- <a href="" class="rideButton" id="goliath" role="button" data-toggle="modal" data-target="#goliathmodal">
+				<div><img src="goliath.png" alt="" class="goliathImage"></div>
+			</a>
+			<a href="" class="rideButton" id="batman" role="button" data-toggle="modal" data-target="#batmanmodal">
+				<div><img src="ride_2.png" alt="" class="batmanImage"></div>
+			</a>
+			<a href="" class="rideButton" id="sevendwarfsminetrain" role="button" data-toggle="modal" data-target="#sevendwarfsminetrainmodal"> 
+				<div><img src="seventrain.png" alt="" class="sevenTrainImage"></div>
+			</a>
+			<a href="" class="rideButton" id="spacemountain" role="button" data-toggle="modal" data-target="#spacemountainmodal">
+				<div><img src="spacemountain.png" alt="" class="spacemountainImage"></div> -->
+			<!-- </a> -->
+		
+		<!-- Ride One Modal -->
+		<div id="hulkridemodal" class="modal fade in" tabindex="-1" role="dialog" aria=labelledby="myModalLabel" aria-hidden="false">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">
+							<span aria-hidden="true">x</span>
+							<span class="sr-only">Close</span>
+						</button>
+						<h4 class="modal-title">Hulk Ride</h4>
+					</div>
+					<div class="modal-body">
+						<div class="modalTabs">
+							<ul id="myTab" class="nav nav-tabs" role="tablist">
+								<li class="active" id="hulkrideTab">
+									<a href="#hulkride_tab1" role="tab" data-toggle="tab">Tab 1</a>
+								</li>
+								<li id="hulkrideTab2">
+									<a href="#hulkride_tab2" role="tab" data-toggle="tab">Tab 2</a>
+								</li>
+								<li id="hulkrideTab3">
+									<a href="#hulkride_tab3" role="tab" data-toggle="tab">Tab 3</a>
+								</li>
+							</ul>
+							<div id="myTabContent" class="tab-content">
+								<div class="tab-pane active" id="hulkride_tab1">
+									<script>
+										var fileNameByID = "hulkride";
+										var fileToRead = "../SentimentCounts/"+fileNameByID+".json";
+										// var width = 800,
+										//     height = 250,
+										//     radius = Math.min(width, height) / 2;
+										// var data = (function() {
+										//         var json = null;
+										//         $.ajax({
+										//             'async': false,
+										//             'global': false,
+										//             'url': fileToRead,
+										//             'dataType': "json",
+										//             'success': function (data) {
+										//                 json = data;
+										//             }
+										//         });
+										//         return json;
+										//     })();
+										// console.log("data read is " + data);
+
+										// var color = d3.scale.ordinal()
+		    				// 				.range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
+
+										// var arc = d3.svg.arc()
+										//     .outerRadius(radius - 10)
+										//     .innerRadius(radius - 70);
+
+										// var pie = d3.layout.pie()
+										//     .sort(null)
+										//     .value(function (d) {
+										//     return d.count;
+										// });
+										// console.log(pie(data));
+
+										tabToAppend = fileNameByID+"_tab1";
+										// var svg = d3.select("#"+tabToAppend).append("svg")
+										//     .attr("width", width)
+										//     .attr("height", height)
+										//     .append("g")
+										//     .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+									 //    var g = svg.selectAll(".arc")
+									 //        .data(pie(data))
+									 //        .enter().append("g")
+									 //        .attr("class", "arc");
+
+									 //    g.append("path")
+									 //        .attr("d", arc)
+									 //        .style("fill", function (d) {
+									 //        return color(d.data.sentiment);
+									 //    });
+
+									 //    g.append("text")
+									 //        .attr("transform", function (d) {
+									 //        return "translate(" + arc.centroid(d) + ")";
+									 //    })
+									 //        .attr("dy", ".35em")
+									 //        .style("text-anchor", "middle")
+									 //        .text(function (d) {
+									 //        return d.data.sentiment;
+									 //    });
+
+									$('#'+tabToAppend).highcharts({
+								        chart: {
+								            plotBackgroundColor: null,
+								            plotBorderWidth: 0,
+								            plotShadow: false
+								        },
+								        title: {
+								            text: 'Browser<br>shares',
+								            align: 'center',
+								            verticalAlign: 'middle',
+								            y: 50
+								        },
+								        tooltip: {
+								            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+								        },
+								        plotOptions: {
+								            pie: {
+								                dataLabels: {
+								                    enabled: true,
+								                    distance: -50,
+								                    style: {
+								                        fontWeight: 'bold',
+								                        color: 'white',
+								                        textShadow: '0px 1px 2px black'
+								                    }
+								                },
+								                startAngle: -90,
+								                endAngle: 90,
+								                center: ['50%', '75%']
+								            }
+								        },
+								        series: [{
+								            type: 'pie',
+								            name: 'Browser share',
+								            innerSize: '50%',
+								            data: [
+								                ['Positive',   45.0],
+								                ['Neutral',       26.8],
+								                ['Negative',     6.2],
+								                {
+								                    name: 'Negative',
+								                    y: 0.7,
+								                    dataLabels: {
+								                        enabled: false
+								                    }
+								                }
+								            ]
+								        }]
+								    });
+		 
+									</script>
+								</div>
+								<div class="tab-pane" id="hulkride_tab2">
+									<h2>The most frequently used words in:</h2>
+								    <h2 id="book-title"></h2>
+								   
+								    <div id="main" role="main">
+								      	<div id="vis" class="includeVis"></div>
+								      	<div id="status"></div>
+								      	<div id="controls">
+        							  	<h3>Jitter</h3>
+								      	<form id="jitter" class="jitter" oninput="output.value = (jitter_input.value / 200).toFixed(3)">
+								          <input id="jitter_input" type="range" min="0" max="400" value="100" style="width:240px;">
+								          <output name="output" for="input">0.5</output>
+								        </form>
+      								  </div>
+    								</div>
+    								<table id="tweetsList" border="1">
+      									
+    								</table>
+									<script type="text/javascript" src="js/vis.js"></script>
+								</div>
+								<div class="tab-pane" id="hulkride_tab3">
+									<div class="sentimentButtons">
+										<a href="" class="btn btn-primary btn-lg sentimentButton" id="positiveSentiment" role="button">Positive</a>
+										<a href="" class="btn btn-primary btn-lg sentimentButton" id="neutralSentiment" role="button">Neutral</a>
+										<a href="" class="btn btn-primary btn-lg sentimentButton" id="negativeSentiment" role="button">Negative</a>
+									</div>
+									<div class="sentimentBasedTweets"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<!-- Ride 2 modal -->
+		<div id="goliathmodal" class="modal fade in" tabindex="-1" role="dialog" aria=labelledby="myModalLabel" aria-hidden="false">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">
+							<span aria-hidden="true">x</span>
+							<span class="sr-only">Close</span>
+						</button>
+						<h4 class="modal-title">Goliath</h4>
+					</div>
+					<div class="modal-body">
+						<div class="modalTabs">
+							<ul id="goliath_Tab" class="nav nav-tabs" role="tablist">
+								<li class="active">
+									<a href="#goliath_tab1" role="tab" data-toggle="tab" id="goliathTab">Tab 1</a>
+								</li>
+								<li>
+									<a href="#goliath_tab2" role="tab" data-toggle="tab">Tab 2</a>
+								</li>
+							</ul>
+							<div id="goliathTabContent" class="tab-content">
+								<div class="tab-pane active" id="goliath_tab1">
+									<script>
+										// d3.selectAll("svg").remove();
+										var fileNameByID = "goliath";
+										var fileToRead = "../SentimentCounts/"+fileNameByID+".json";
+										var width = 800,
+										    height = 250,
+										    radius = Math.min(width, height) / 2;
+										var data = (function() {
+										        var json = null;
+										        $.ajax({
+										            'async': false,
+										            'global': false,
+										            'url': fileToRead,
+										            'dataType': "json",
+										            'success': function (data) {
+										                json = data;
+										            }
+										        });
+										        return json;
+										    })();
+										console.log("data read is " + data);
+
+										var color = d3.scale.ordinal()
+		    								.range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
+
+										var arc = d3.svg.arc()
+										    .outerRadius(radius - 10)
+										    .innerRadius(radius - 70);
+
+										var pie = d3.layout.pie()
+										    .sort(null)
+										    .value(function (d) {
+										    return d.count;
+										});
+										console.log(pie(data));
+
+										tabToAppend = fileNameByID+"_tab1";
+										var svg = d3.select("#"+tabToAppend).append("svg")
+										    .attr("width", width)
+										    .attr("height", height)
+										    .append("g")
+										    .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+									    var g = svg.selectAll(".arc")
+									        .data(pie(data))
+									        .enter().append("g")
+									        .attr("class", "arc");
+
+									    g.append("path")
+									        .attr("d", arc)
+									        .style("fill", function (d) {
+									        return color(d.data.sentiment);
+									    });
+
+									    g.append("text")
+									        .attr("transform", function (d) {
+									        return "translate(" + arc.centroid(d) + ")";
+									    })
+									        .attr("dy", ".35em")
+									        .style("text-anchor", "middle")
+									        .text(function (d) {
+									        return d.data.sentiment;
+									    });
+									</script>
+								</div>
+								<div class="tab-pane fade" id="goliath_tab2">
+										<h2>The most frequently used words in:</h2>
+									    <h2 id="book-title"></h2>
+									   
+									    <div id="main" role="main">
+									      	<div id="vis" class="includeVis"></div>
+									      	<div id="status"></div>
+									      	<div id="controls">
+	        							  	<h3>Jitter</h3>
+									      	<form id="jitter" class="jitter" oninput="output.value = (jitter_input.value / 200).toFixed(3)" >
+									          <input id="jitter_input" type="range" min="0" max="400" value="100" style="width:240px;">
+									          <output name="output" for="input">0.5</output>
+									        </form>
+	      								  </div>
+	    								</div>
+	    								<table id="tweetsList">
+	      
+	    								</table>
+										<script type="text/javascript" src="js/vis.js"></script>
+								</div>
+								<div class="tab-pane" id="goliath_tab3">
+									<div class="sentimentButtons">
+										<a href="" class="btn btn-primary btn-lg sentimentButton" id="positiveSentiment" role="button">Positive</a>
+										<a href="" class="btn btn-primary btn-lg sentimentButton" id="neutralSentiment" role="button">Neutral</a>
+										<a href="" class="btn btn-primary btn-lg sentimentButton" id="negativeSentiment" role="button">Negative</a>
+									</div>
+									<div class="sentimentBasedTweets"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Ride 3 modal -->
+		<div id="batmanmodal" class="modal fade in" tabindex="-1" role="dialog" aria=labelledby="myModalLabel" aria-hidden="false">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">
+							<span aria-hidden="true">x</span>
+							<span class="sr-only">Close</span>
+						</button>
+						<h4 class="modal-title">Batman</h4>
+					</div>
+					<div class="modal-body">
+						<div class="modalTabs">
+							<ul id="batman_Tab" class="nav nav-tabs" role="tablist">
+								<li class="active">
+									<a href="#batman_tab1" role="tab" data-toggle="tab">Tab 1</a>
+								</li>
+								<li>
+									<a href="#batman_tab2" role="tab" data-toggle="tab" data-target="#batman_tab2" id="batmanTab">Tab 2</a>
+								</li>
+							</ul>
+							<div id="batmanTabContent" class="tab-content">
+								<div class="tab-pane active" id="batman_tab1">
+									<script>
+										// d3.selectAll("svg").remove();
+										var fileNameByID = "batman";
+										var fileToRead = "../SentimentCounts/"+fileNameByID+".json";
+										var width = 800,
+										    height = 250,
+										    radius = Math.min(width, height) / 2;
+										var data = (function() {
+										        var json = null;
+										        $.ajax({
+										            'async': false,
+										            'global': false,
+										            'url': fileToRead,
+										            'dataType': "json",
+										            'success': function (data) {
+										                json = data;
+										            }
+										        });
+										        return json;
+										    })();
+										console.log("data read is " + data);
+
+										var color = d3.scale.ordinal()
+		    								.range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
+
+										var arc = d3.svg.arc()
+										    .outerRadius(radius - 10)
+										    .innerRadius(radius - 70);
+
+										var pie = d3.layout.pie()
+										    .sort(null)
+										    .value(function (d) {
+										    return d.count;
+										});
+										console.log(pie(data));
+
+										tabToAppend = fileNameByID+"_tab1";
+										var svg = d3.select("#"+tabToAppend).append("svg")
+										    .attr("width", width)
+										    .attr("height", height)
+										    .append("g")
+										    .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+									    var g = svg.selectAll(".arc")
+									        .data(pie(data))
+									        .enter().append("g")
+									        .attr("class", "arc");
+
+									    g.append("path")
+									        .attr("d", arc)
+									        .style("fill", function (d) {
+									        return color(d.data.sentiment);
+									    });
+
+									    g.append("text")
+									        .attr("transform", function (d) {
+									        return "translate(" + arc.centroid(d) + ")";
+									    })
+									        .attr("dy", ".35em")
+									        .style("text-anchor", "middle")
+									        .text(function (d) {
+									        return d.data.sentiment;
+									    });
+									</script>
+								</div>
+								<div class="tab-pane fade" id="batman_tab2">
+									<h2>The most frequently used words in:</h2>
+									    <h2 id="book-title"></h2>
+									   
+									    <div id="main" role="main">
+									      	<div id="vis" class="includeVis"></div>
+									      	<div id="status"></div>
+									      	<div id="controls">
+	        							  	<h3>Jitter</h3>
+									      	<form id="jitter" class="jitter" oninput="output.value = (jitter_input.value / 200).toFixed(3)" >
+									          <input id="jitter_input" type="range" min="0" max="400" value="100" style="width:240px;">
+									          <output name="output" for="input">0.5</output>
+									        </form>
+	      								  </div>
+	    								</div>
+	    								<table id="tweetsList">
+	      									
+	    								</table>
+										<script type="text/javascript" src="js/vis.js"></script>
+								</div>
+								<div class="tab-pane" id="batman_tab3">
+									<div class="sentimentButtons">
+										<a href="" class="btn btn-primary btn-lg sentimentButton" id="positiveSentiment" role="button">Positive</a>
+										<a href="" class="btn btn-primary btn-lg sentimentButton" id="neutralSentiment" role="button">Neutral</a>
+										<a href="" class="btn btn-primary btn-lg sentimentButton" id="negativeSentiment" role="button">Negative</a>
+									</div>
+									<div class="sentimentBasedTweets"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Ride 4 modal -->
+
+		<div id="sevendwarfsminetrainmodal" class="modal fade in" tabindex="-1" role="dialog" aria=labelledby="myModalLabel" aria-hidden="false">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">
+							<span aria-hidden="true">x</span>
+							<span class="sr-only">Close</span>
+						</button>
+						<h4 class="modal-title">Goliath</h4>
+					</div>
+					<div class="modal-body">
+						<div class="modalTabs">
+							<ul id="sevendwarfsminetrain_Tab" class="nav nav-tabs" role="tablist">
+								<li class="active">
+									<a href="#sevendwarfsminetrain_tab1" role="tab" data-toggle="tab">Tab 1</a>
+								</li>
+								<li>
+									<a href="#sevendwarfsminetrain_tab2" role="tab" data-toggle="tab" id="sevendwarfsminetrainTab">Tab 2</a>
+								</li>
+							</ul>
+							<div id="sevendwarfsminetrainTabContent" class="tab-content">
+								<div class="tab-pane active" id="sevendwarfsminetrain_tab1">
+									<script>
+										// d3.selectAll("svg").remove();
+										var fileNameByID = "sevendwarfsminetrain";
+										var fileToRead = "../SentimentCounts/"+fileNameByID+".json";
+										var width = 800,
+										    height = 250,
+										    radius = Math.min(width, height) / 2;
+										var data = (function() {
+										        var json = null;
+										        $.ajax({
+										            'async': false,
+										            'global': false,
+										            'url': fileToRead,
+										            'dataType': "json",
+										            'success': function (data) {
+										                json = data;
+										            }
+										        });
+										        return json;
+										    })();
+										console.log("data read is " + data);
+
+										var color = d3.scale.ordinal()
+		    								.range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
+
+										var arc = d3.svg.arc()
+										    .outerRadius(radius - 10)
+										    .innerRadius(radius - 70);
+
+										var pie = d3.layout.pie()
+										    .sort(null)
+										    .value(function (d) {
+										    return d.count;
+										});
+										console.log(pie(data));
+
+										tabToAppend = fileNameByID+"_tab1";
+										var svg = d3.select("#"+tabToAppend).append("svg")
+										    .attr("width", width)
+										    .attr("height", height)
+										    .append("g")
+										    .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+									    var g = svg.selectAll(".arc")
+									        .data(pie(data))
+									        .enter().append("g")
+									        .attr("class", "arc");
+
+									    g.append("path")
+									        .attr("d", arc)
+									        .style("fill", function (d) {
+									        return color(d.data.sentiment);
+									    });
+
+									    g.append("text")
+									        .attr("transform", function (d) {
+									        return "translate(" + arc.centroid(d) + ")";
+									    })
+									        .attr("dy", ".35em")
+									        .style("text-anchor", "middle")
+									        .text(function (d) {
+									        return d.data.sentiment;
+									    });
+									</script>
+								</div>
+								<div class="tab-pane fade" id="sevendwarfsminetrain_tab2">
+									<h2>The most frequently used words in:</h2>
+									    <h2 id="book-title"></h2>
+									   
+									    <div id="main" role="main">
+									      	<div id="vis" class="includeVis"></div>
+									      	<div id="status"></div>
+									      	<div id="controls">
+	        							  	<h3>Jitter</h3>
+									      	<form id="jitter" class="jitter" oninput="output.value = (jitter_input.value / 200).toFixed(3)" >
+									          <input id="jitter_input" type="range" min="0" max="400" value="100" style="width:240px;">
+									          <output name="output" for="input">0.5</output>
+									        </form>
+	      								  </div>
+	    								</div>
+	    								<table id="tweetsList">
+	      
+	    								</table>
+										<script type="text/javascript" src="js/vis.js"></script>
+								</div>
+								<div class="tab-pane" id="sevendwarfsminetrain_tab3">
+									<div class="sentimentButtons">
+										<a href="" class="btn btn-primary btn-lg sentimentButton" id="positiveSentiment" role="button">Positive</a>
+										<a href="" class="btn btn-primary btn-lg sentimentButton" id="neutralSentiment" role="button">Neutral</a>
+										<a href="" class="btn btn-primary btn-lg sentimentButton" id="negativeSentiment" role="button">Negative</a>
+									</div>
+									<div class="sentimentBasedTweets"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<!-- Ride 5 modal -->
+
+		<div id="spacemountainmodal" class="modal fade in" tabindex="-1" role="dialog" aria=labelledby="myModalLabel" aria-hidden="false">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">
+							<span aria-hidden="true">x</span>
+							<span class="sr-only">Close</span>
+						</button>
+						<h4 class="modal-title">Goliath</h4>
+					</div>
+					<div class="modal-body">
+						<div class="modalTabs">
+							<ul id="spacemountain_Tab" class="nav nav-tabs" role="tablist">
+								<li class="active">
+									<a href="#spacemountain_tab1" role="tab" data-toggle="tab">Tab 1</a>
+								</li>
+								<li>
+									<a href="#spacemountain_tab2" role="tab" data-toggle="tab" id="spacemountainTab">Tab 2</a>
+								</li>
+							</ul>
+							<div id="spacemountainTabContent" class="tab-content">
+								<div class="tab-pane active" id="spacemountain_tab1">
+									<script>
+										// d3.selectAll("svg").remove();
+										var fileNameByID = "spacemountain";
+										var fileToRead = "../SentimentCounts/"+fileNameByID+".json";
+										var width = 800,
+										    height = 250,
+										    radius = Math.min(width, height) / 2;
+										var data = (function() {
+										        var json = null;
+										        $.ajax({
+										            'async': false,
+										            'global': false,
+										            'url': fileToRead,
+										            'dataType': "json",
+										            'success': function (data) {
+										                json = data;
+										            }
+										        });
+										        return json;
+										    })();
+										console.log("data read is " + data);
+
+										var color = d3.scale.ordinal()
+		    								.range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
+
+										var arc = d3.svg.arc()
+										    .outerRadius(radius - 10)
+										    .innerRadius(radius - 70);
+
+										var pie = d3.layout.pie()
+										    .sort(null)
+										    .value(function (d) {
+										    return d.count;
+										});
+										console.log(pie(data));
+
+										tabToAppend = fileNameByID+"_tab1";
+										var svg = d3.select("#"+tabToAppend).append("svg")
+										    .attr("width", width)
+										    .attr("height", height)
+										    .append("g")
+										    .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+									    var g = svg.selectAll(".arc")
+									        .data(pie(data))
+									        .enter().append("g")
+									        .attr("class", "arc");
+
+									    g.append("path")
+									        .attr("d", arc)
+									        .style("fill", function (d) {
+									        return color(d.data.sentiment);
+									    });
+
+									    g.append("text")
+									        .attr("transform", function (d) {
+									        return "translate(" + arc.centroid(d) + ")";
+									    })
+									        .attr("dy", ".35em")
+									        .style("text-anchor", "middle")
+									        .text(function (d) {
+									        return d.data.sentiment;
+									    });
+									</script>
+								</div>
+								<div class="tab-pane fade" id="spacemountain_tab2">
+									<h2>The most frequently used words in:</h2>
+									    <h2 id="book-title"></h2>
+									   
+									    <div id="main" role="main">
+									      	<div id="vis" class="includeVis"></div>
+									      	<div id="status"></div>
+									      	<div id="controls">
+	        							  	<h3>Jitter</h3>
+									      	<form id="jitter" class="jitter" oninput="output.value = (jitter_input.value / 200).toFixed(3)" >
+									          <input id="jitter_input" type="range" min="0" max="400" value="100" style="width:240px;">
+									          <output name="output" for="input">0.5</output>
+									        </form>
+	      								  </div>
+	    								</div>
+	    								<table id="tweetsList" border="1">
+	      
+	    								</table>
+										<script type="text/javascript" src="js/vis.js"></script>
+								</div>
+								<div class="tab-pane" id="spacemountain_tab3">
+									<div class="sentimentButtons">
+										<a href="" class="btn btn-primary btn-lg sentimentButton" id="positiveSentiment" role="button">Positive</a>
+										<a href="" class="btn btn-primary btn-lg sentimentButton" id="neutralSentiment" role="button">Neutral</a>
+										<a href="" class="btn btn-primary btn-lg sentimentButton" id="negativeSentiment" role="button">Negative</a>
+									</div>
+									<div class="sentimentBasedTweets"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<script>
+			$( document ).ready(function() {
+				windowWidth = $(window).width();
+			 	windowHeight = $(window).height();
+			 	console.log(windowWidth);
+			 	console.log(windowHeight);
+			 	$(".mainBackgroundImage").css({'width' : 'windowWidth', 'height' : 'windowHeight'});
+
+
+				$("#batmanTab").click(function(){
+					drawPieChart("batman");
+				});
+				$("#goliathTab").click(function(){
+					drawPieChart("goliath");
+				});
+				$("#hulkrideTab").click(function(){
+					drawPieChart("hulkride");
+				});
+
+				$("#sevendwarfsminetrainTab").click(function(){
+					drawPieChart("sevendwarfsminetrain");
+				});
+
+				$("#spacemountainTab").click(function(){
+					drawPieChart("spacemountain");
+				});
+
+				
+
+			function drawPieChart(id) {
+										var tabToAppend = fileNameByID+"_tab1";
+										if($("#tabToAppend svg").length > 0) {
+											$("#tabToAppend svg").remove();
+										}
+										var fileNameByID = id;
+										var fileToRead = "../SentimentCounts/"+fileNameByID+".json";
+										var width = 800,
+										    height = 250,
+										    radius = Math.min(width, height) / 2;
+										var data = (function() {
+										        var json = null;
+										        $.ajax({
+										            'async': false,
+										            'global': false,
+										            'url': fileToRead,
+										            'dataType': "json",
+										            'success': function (data) {
+										                json = data;
+										            }
+										        });
+										        return json;
+										    })();
+										console.log("data read is " + data);
+
+										var color = d3.scale.ordinal()
+		    								.range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
+
+										var arc = d3.svg.arc()
+										    .outerRadius(radius - 10)
+										    .innerRadius(radius - 70);
+
+										var pie = d3.layout.pie()
+										    .sort(null)
+										    .value(function (d) {
+										    return d.count;
+										});
+										console.log(pie(data));
+
+										
+										var svg = d3.select("#"+tabToAppend).append("svg")
+										    .attr("width", width)
+										    .attr("height", height)
+										    .append("g")
+										    .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+									    var g = svg.selectAll(".arc")
+									        .data(pie(data))
+									        .enter().append("g")
+									        .attr("class", "arc");
+
+									    g.append("path")
+									        .attr("d", arc)
+									        .style("fill", function (d) {
+									        return color(d.data.sentiment);
+									    });
+
+									    g.append("text")
+									        .attr("transform", function (d) {
+									        return "translate(" + arc.centroid(d) + ")";
+									    })
+									        .attr("dy", ".35em")
+									        .style("text-anchor", "middle")
+									        .text(function (d) {
+									        return d.data.sentiment;
+									    });
+		 }
+		 	
+		 });
+		</script>
+		<script>window.jQuery || document.write('<script src="js/libs/jquery-1.7.2.min.js"><\/script>')</script>
+									<script defer src="js/plugins.js"></script>
+									<script src="js/libs/coffee-script.js"></script>
+		</script>
+		</div>
+	</body>
 </html>

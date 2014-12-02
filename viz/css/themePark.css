@@ -1,0 +1,80 @@
+.buttonHolder {
+	padding: 30px;
+}
+
+.rideButton {
+	display: inline-block;
+}
+
+.rideVideo {
+	margin: auto;
+	position: relative;
+}
+
+.tweet-box {
+	display: block;
+	overflow-y:auto;
+	max-height: 240px;
+	min-height: 50px;
+	width:auto;
+	margin:auto;
+	border-size: 1px;
+	border-style: solid;
+	border-color:rgba(47,194,239,0.25);
+	overflow: hidden;
+	text-shadow: none;
+}
+
+.modal-tweet-form-container {
+	display: block;
+	margin: 15px auto;
+	height: auto;
+	overflow: hidden;
+	background-color: #fff;
+	border: 1px solid #ddd;
+}
+
+.tweet-content {
+	margin:20px auto;
+}
+
+.tweetGlyph {
+	float: left;
+	width: auto;
+	margin-right: 5px;
+}
+
+.tweetText {
+	float: right;
+	width:auto;
+}
+
+.tweet-char-button {
+	float: right;
+}
+
+.tweet-char-button .characterCount {
+	display: inline-block;
+	width:35px;
+	padding: 0 3px;
+	position: relative;
+}
+
+.tweetButton {
+	display: inline-block;
+}
+
+.tweetContainer {
+	height:auto;
+}
+
+.tweetHeading {
+	text-align: center;
+	border-bottom: 1px solid #e1e8ed;
+	padding: 10px;
+}
+
+.tweetContentBody {
+	padding: 10px;
+	overflow: hidden;						
+}

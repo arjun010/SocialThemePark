@@ -81,6 +81,7 @@ var tweetsBatman = (function() {
     })();
 
 var tweetsHulkRide = (function() {
+  console.log("this function called");
         var json = null;
         $.ajax({
             'async': false,
@@ -99,7 +100,7 @@ var tweetsHulkRide = (function() {
 root = typeof exports !== "undefined" && exports !== null ? exports : this;
 Bubbles = function() {
   var chart, clear, click, collide, collisionPadding, connectEvents, data, force, gravity, hashchange, height, idValue, jitter, label, margin, maxRadius, minCollisionRadius, mouseout, mouseover, node, rScale, rValue, textValue, tick, transformData, update, updateActive, updateLabels, updateNodes, width;
-  width = 1200;
+  width = 568;
   height = 700;
   data = [];
   node = null;
@@ -268,6 +269,10 @@ Bubbles = function() {
     return updateActive(id);
   };
   updateActive = function(id) {
+     if($(".tweet").length > 0){
+            console.log("It exists");
+              $(".tweet").remove();
+          }
     node.classed("bubble-selected", function(d) {
       return id === idValue(d);
     });
@@ -288,11 +293,11 @@ Bubbles = function() {
         curRideTweets=tweetsHulkRide;
       }
       
-      $("#tweetsList").empty();
+
       for (var i =0; i<curRideTweets.length; i++){
         if(curRideTweets[i]['tweet'].toLowerCase().indexOf(id) > -1){
           console.log(curRideTweets[i]['tweet']);
-          $('#tweetsList').prepend('<p class="tweet">'+curRideTweets[i]['tweet']+'</p>');
+          $('#'+key+'modal '+'#tweetsList').prepend('<tr class="tweet"><td>'+curRideTweets[i]['tweet']+'</td></tr>');
         }
       }
       return d3.select("#status").html("<h3>The word <span class=\"active\">" + id + "</span> is now active</h3>");
@@ -348,7 +353,9 @@ $(function() {
   var display, key, plot, text;
   plot = Bubbles();
   display = function(data) {
-    return plotData("#vis", data, plot);
+    modalToAppend = key+"modal";
+    modalDivToAppend = "#"+modalToAppend+" .includeVis";
+    return plotData(modalDivToAppend, data, plot);
   };
   key = decodeURIComponent(location.search).replace("?", "");
   key = key.replace("/","")
@@ -365,14 +372,36 @@ $(function() {
   //console.log(text);
   $("#text-select").val(key);
 
-  d3.select("#jitter").on("input", function() {
+    $("form.jitter").on("input", function() {
     return plot.jitter(parseFloat(this.output.value));
   });
-  d3.select("#text-select").on("change", function(e) {
-    key = $(this).val();
-    location.replace("#");
-    return location.search = encodeURIComponent(key);
-  });
-  d3.select("#book-title").html(text.name);
+  // d3.select("#text-select").on("change", function(e) {
+  //   key = $(this).val();
+  //   location.replace("#");
+  //   return location.search = encodeURIComponent(key);
+  // });
+  $(".rideButton").hover(function(){
+            currentRideId = $(this).attr("id");
+            currentUrl = window.location.search;
+            if(currentUrl.length > 0) { 
+              currentUrl = currentUrl.split("?")[1].split("/")[0];
+              if(currentUrl == currentRideId) {
+                //do nothing
+              } else {
+                changeUrlToRideName(currentRideId);
+              }
+            }
+            else {
+              changeUrlToRideName(currentRideId);
+            }
+        });
+
+      function changeUrlToRideName(ride) { 
+            key = ride;
+            location.replace("#");
+            return location.search = encodeURIComponent(key);
+      }
+
+  $("#"+key+"modal "+"#book-title").html(text.name);
   return d3.csv("../../WordCounts/" + text.file, display);
 });
