@@ -175,6 +175,7 @@ footer p {
 .videoDiv { 
   width:100%;
   display: block;
+  text-align: center;
 }
 
 .tweetDivTextarea { 
