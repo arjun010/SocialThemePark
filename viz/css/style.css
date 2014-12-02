@@ -192,3 +192,11 @@ margin-top: 10px;
   font-size: 15px;
   border-bottom: solid 1px rgba(47, 194, 239, .25);
 }
+
+.mainBackgroundImage .modal-dialog { 
+  width: 700px;
+}
+
+.tweet.list-group-item {
+  color:#888;
+}

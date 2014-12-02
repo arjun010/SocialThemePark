@@ -297,7 +297,7 @@ Bubbles = function() {
       for (var i =0; i<curRideTweets.length; i++){
         if(curRideTweets[i]['tweet'].toLowerCase().indexOf(id) > -1){
           //console.log(curRideTweets[i]['tweet']);
-          $('#'+key+'modal '+'#tweetsList').prepend('<tr class="tweet"><td>'+curRideTweets[i]['tweet']+'</td></tr>');
+          $('#'+key+'modal '+'#tweetsList').prepend('<li class="tweet list-group-item">'+curRideTweets[i]['tweet']+'</li>');
         }
       }
       return d3.select("#status").html("<h3>The word <span class=\"active\">" + id + "</span> is now active</h3>");
