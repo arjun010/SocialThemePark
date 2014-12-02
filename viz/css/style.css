@@ -82,7 +82,7 @@ header {
   stroke-width: 1.5px;
 }
 
-.active {
+.status .active {
   color: #A6BA92
 }
 
