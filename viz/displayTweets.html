@@ -219,7 +219,7 @@ var neuTweetsGoliath = (function() {
 	<button id="positiveTweets" onclick="addPosTweets()">Positive</button>
 	<button id="neutralTweets" onclick="addNeutralTweets()">Neutral</button>
 	<button id="negativeTweets" onclick="addNegTweets()">Negative</button>
-	<div id="tweetsList"></div>
+	<div id="sentimentList"></div>
 	<script type="text/javascript">
 	var curRide;
 	function rideChanged(){
@@ -227,85 +227,85 @@ var neuTweetsGoliath = (function() {
 	}
 	function addPosTweets(){
 		if(curRide=="hulkride"){
-			$("#tweetsList").empty();
+			$("#sentimentList").empty();
       		for(var i =0; i<posTweetsHulkRide.length;i++){
-      			$('#tweetsList').prepend('<p class="tweet">'+posTweetsHulkRide[i]['tweet']+'</p>');
+      			$('#sentimentList').prepend('<p class="tweet">'+posTweetsHulkRide[i]['tweet']+'</p>');
       		}	
 		}else if(curRide=="batman"){
-			$("#tweetsList").empty();
+			$("#sentimentList").empty();
       		for(var i =0; i<posTweetsBatman.length;i++){
-      			$('#tweetsList').prepend('<p class="tweet">'+posTweetsBatman[i]['tweet']+'</p>');
+      			$('#sentimentList').prepend('<p class="tweet">'+posTweetsBatman[i]['tweet']+'</p>');
       		}
 		}else if(curRide=="goliath"){
-			$("#tweetsList").empty();
+			$("#sentimentList").empty();
       		for(var i =0; i<posTweetsGoliath.length;i++){
-      			$('#tweetsList').prepend('<p class="tweet">'+posTweetsGoliath[i]['tweet']+'</p>');
+      			$('#sentimentList').prepend('<p class="tweet">'+posTweetsGoliath[i]['tweet']+'</p>');
       		}
 		}else if(curRide=="sevendwarfsminetrain"){
-			$("#tweetsList").empty();
+			$("#sentimentList").empty();
       		for(var i =0; i<posTweetsSDMT.length;i++){
-      			$('#tweetsList').prepend('<p class="tweet">'+posTweetsSDMT[i]['tweet']+'</p>');
+      			$('#sentimentList').prepend('<p class="tweet">'+posTweetsSDMT[i]['tweet']+'</p>');
       		}
 		}else if(curRide=="spacemountain"){
-			$("#tweetsList").empty();
+			$("#sentimentList").empty();
       		for(var i =0; i<posTweetsSpaceMountain.length;i++){
-      			$('#tweetsList').prepend('<p class="tweet">'+posTweetsSpaceMountain[i]['tweet']+'</p>');
+      			$('#sentimentList').prepend('<p class="tweet">'+posTweetsSpaceMountain[i]['tweet']+'</p>');
       		}
 		}
 	}
 	function addNegTweets(){
 		if(curRide=="hulkride"){
-			$("#tweetsList").empty();
+			$("#sentimentList").empty();
       		for(var i =0; i<negTweetsHulkRide.length;i++){
-      			$('#tweetsList').prepend('<p class="tweet">'+negTweetsHulkRide[i]['tweet']+'</p>');
+      			$('#sentimentList').prepend('<p class="tweet">'+negTweetsHulkRide[i]['tweet']+'</p>');
       		}	
 		}else if(curRide=="batman"){
-			$("#tweetsList").empty();
+			$("#sentimentList").empty();
       		for(var i =0; i<negTweetsBatman.length;i++){
-      			$('#tweetsList').prepend('<p class="tweet">'+negTweetsBatman[i]['tweet']+'</p>');
+      			$('#sentimentList').prepend('<p class="tweet">'+negTweetsBatman[i]['tweet']+'</p>');
       		}
 		}else if(curRide=="goliath"){
-			$("#tweetsList").empty();
+			$("#sentimentList").empty();
       		for(var i =0; i<negTweetsGoliath.length;i++){
-      			$('#tweetsList').prepend('<p class="tweet">'+negTweetsGoliath[i]['tweet']+'</p>');
+      			$('#sentimentList').prepend('<p class="tweet">'+negTweetsGoliath[i]['tweet']+'</p>');
       		}
 		}else if(curRide=="sevendwarfsminetrain"){
-			$("#tweetsList").empty();
+			$("#sentimentList").empty();
       		for(var i =0; i<negTweetsSDMT.length;i++){
-      			$('#tweetsList').prepend('<p class="tweet">'+negTweetsSDMT[i]['tweet']+'</p>');
+      			$('#sentimentList').prepend('<p class="tweet">'+negTweetsSDMT[i]['tweet']+'</p>');
       		}
 		}else if(curRide=="spacemountain"){
-			$("#tweetsList").empty();
+			$("#sentimentList").empty();
       		for(var i =0; i<negTweetsSpaceMountain.length;i++){
-      			$('#tweetsList').prepend('<p class="tweet">'+negTweetsSpaceMountain[i]['tweet']+'</p>');
+      			$('#sentimentList').prepend('<p class="tweet">'+negTweetsSpaceMountain[i]['tweet']+'</p>');
       		}
 		}
 	}
 	function addNeutralTweets(){
 		if(curRide=="hulkride"){
-			$("#tweetsList").empty();
+			$("#sentimentList").empty();
       		for(var i =0; i<neuTweetsHulkRide.length;i++){
-      			$('#tweetsList').prepend('<p class="tweet">'+neuTweetsHulkRide[i]['tweet']+'</p>');
+      			$('#sentimentList').prepend('<p class="tweet">'+neuTweetsHulkRide[i]['tweet']+'</p>');
       		}	
 		}else if(curRide=="batman"){
-			$("#tweetsList").empty();
+			$("#sentimentList").empty();
       		for(var i =0; i<neuTweetsBatman.length;i++){
-      			$('#tweetsList').prepend('<p class="tweet">'+neuTweetsBatman[i]['tweet']+'</p>');
+      			$('#sentimentList').prepend('<p class="tweet">'+neuTweetsBatman[i]['tweet']+'</p>');
       		}
 		}else if(curRide=="goliath"){
-			$("#tweetsList").empty();
+			$("#sentimentList").empty();
       		for(var i =0; i<neuTweetsGoliath.length;i++){
-      			$('#tweetsList').prepend('<p class="tweet">'+neuTweetsGoliath[i]['tweet']+'</p>');
+      			$('#sentimentList').prepend('<p class="tweet">'+neuTweetsGoliath[i]['tweet']+'</p>');
       		}
 		}else if(curRide=="sevendwarfsminetrain"){
-			$("#tweetsList").empty();
+			$("#sentimentList").empty();
       		for(var i =0; i<neuTweetsSDMT.length;i++){
-      			$('#tweetsList').prepend('<p class="tweet">'+neuTweetsSDMT[i]['tweet']+'</p>');
+      			$('#sentimentList').prepend('<p class="tweet">'+neuTweetsSDMT[i]['tweet']+'</p>');
       		}
 		}else if(curRide=="spacemountain"){
-			$("#tweetsList").empty();
+			$("#sentimentList").empty();
       		for(var i =0; i<neuTweetsSpaceMountain.length;i++){
-      			$('#tweetsList').prepend('<p class="tweet">'+neuTweetsSpaceMountain[i]['tweet']+'</p>');
+      			$('#sentimentList').prepend('<p class="tweet">'+neuTweetsSpaceMountain[i]['tweet']+'</p>');
       		}
 		}
 	}

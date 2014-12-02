@@ -191,9 +191,9 @@
 								</div>
 								<div class="tab-pane" id="hulkride_tab3">
 									<div class="sentimentButtons">
-										<a href="" class="btn btn-primary btn-lg sentimentButton" id="positiveSentiment" role="button">Positive</a>
-										<a href="" class="btn btn-primary btn-lg sentimentButton" id="neutralSentiment" role="button">Neutral</a>
-										<a href="" class="btn btn-primary btn-lg sentimentButton" id="negativeSentiment" role="button">Negative</a>
+										<button  class="btn btn-primary btn-lg sentimentButton" id="positiveSentiment" role="button">Positive</button>
+										<button  class="btn btn-primary btn-lg sentimentButton" id="neutralSentiment" role="button">Neutral</button>
+										<button class="btn btn-primary btn-lg sentimentButton" id="negativeSentiment" role="button">Negative</button>
 									</div>
 									<div class="sentimentBasedTweets"></div>
 								</div>
@@ -435,7 +435,7 @@
 								</div>
 								<div class="tab-pane" id="batman_tab3">
 									<div class="sentimentButtons">
-										<a href="" class="btn btn-primary btn-lg sentimentButton" id="positiveSentiment" role="button">Positive</a>
+										<button class="btn btn-primary btn-lg sentimentButton" id="positiveSentiment" role="button">Positive</button>
 										<a href="" class="btn btn-primary btn-lg sentimentButton" id="neutralSentiment" role="button">Neutral</a>
 										<a href="" class="btn btn-primary btn-lg sentimentButton" id="negativeSentiment" role="button">Negative</a>
 									</div>
@@ -722,6 +722,211 @@
 				});
 
 				
+			
+//space mountain pos, neg, neutral tweets
+var posTweetsSpaceMountain = (function() {
+        var json = null;
+        $.ajax({
+            'async': false,
+            'global': false,
+            'url': "../SentimentCounts/spacemountainPositiveTweets.json",
+            'dataType': "json",
+            'success': function (data) {
+                json = data;
+            }
+        });
+        return json;
+    })();
+var negTweetsSpaceMountain = (function() {
+        var json = null;
+        $.ajax({
+            'async': false,
+            'global': false,
+            'url': "../SentimentCounts/spacemountainNegativeTweets.json",
+            'dataType': "json",
+            'success': function (data) {
+                json = data;
+            }
+        });
+        return json;
+    })();
+var neuTweetsSpaceMountain = (function() {
+        var json = null;
+        $.ajax({
+            'async': false,
+            'global': false,
+            'url': "../SentimentCounts/spacemountainNeutralTweets.json",
+            'dataType': "json",
+            'success': function (data) {
+                json = data;
+            }
+        });
+        return json;
+    })();
+//hulk ride pos, neg, neutral tweets
+var posTweetsHulkRide = (function() {
+        var json = null;
+        $.ajax({
+            'async': false,
+            'global': false,
+            'url': "../SentimentCounts/hulkridePositiveTweets.json",
+            'dataType': "json",
+            'success': function (data) {
+                json = data;
+            }
+        });
+        return json;
+    })();
+var negTweetsHulkRide = (function() {
+        var json = null;
+        $.ajax({
+            'async': false,
+            'global': false,
+            'url': "../SentimentCounts/hulkrideNegativeTweets.json",
+            'dataType': "json",
+            'success': function (data) {
+                json = data;
+            }
+        });
+        return json;
+    })();
+var neuTweetsHulkRide = (function() {
+        var json = null;
+        $.ajax({
+            'async': false,
+            'global': false,
+            'url': "../SentimentCounts/hulkrideNeutralTweets.json",
+            'dataType': "json",
+            'success': function (data) {
+                json = data;
+            }
+        });
+        return json;
+    })();
+//batman pos, neg, neutral tweets
+var posTweetsBatman = (function() {
+        var json = null;
+        $.ajax({
+            'async': false,
+            'global': false,
+            'url': "../SentimentCounts/batmanPositiveTweets.json",
+            'dataType': "json",
+            'success': function (data) {
+                json = data;
+            }
+        });
+        return json;
+    })();
+var negTweetsBatman = (function() {
+        var json = null;
+        $.ajax({
+            'async': false,
+            'global': false,
+            'url': "../SentimentCounts/batmanNegativeTweets.json",
+            'dataType': "json",
+            'success': function (data) {
+                json = data;
+            }
+        });
+        return json;
+    })();
+var neuTweetsBatman = (function() {
+        var json = null;
+        $.ajax({
+            'async': false,
+            'global': false,
+            'url': "../SentimentCounts/batmanNeutralTweets.json",
+            'dataType': "json",
+            'success': function (data) {
+                json = data;
+            }
+        });
+        return json;
+    })();
+//seven dwarfs mine train pos, neg, neutral tweets
+var posTweetsSDMT = (function() {
+        var json = null;
+        $.ajax({
+            'async': false,
+            'global': false,
+            'url': "../SentimentCounts/sdmtPositiveTweets.json",
+            'dataType': "json",
+            'success': function (data) {
+                json = data;
+            }
+        });
+        return json;
+    })();
+var negTweetsSDMT = (function() {
+        var json = null;
+        $.ajax({
+            'async': false,
+            'global': false,
+            'url': "../SentimentCounts/sdmtNegativeTweets.json",
+            'dataType': "json",
+            'success': function (data) {
+                json = data;
+            }
+        });
+        return json;
+    })();
+var neuTweetsSDMT = (function() {
+        var json = null;
+        $.ajax({
+            'async': false,
+            'global': false,
+            'url': "../SentimentCounts/sdmtNeutralTweets.json",
+            'dataType': "json",
+            'success': function (data) {
+                json = data;
+            }
+        });
+        return json;
+    })();
+
+//goliath pos, neg, neutral tweets
+var posTweetsGoliath = (function() {
+        var json = null;
+        $.ajax({
+            'async': false,
+            'global': false,
+            'url': "../SentimentCounts/goliathPositiveTweets.json",
+            'dataType': "json",
+            'success': function (data) {
+                json = data;
+            }
+        });
+        return json;
+    })();
+var negTweetsGoliath = (function() {
+        var json = null;
+        $.ajax({
+            'async': false,
+            'global': false,
+            'url': "../SentimentCounts/goliathNegativeTweets.json",
+            'dataType': "json",
+            'success': function (data) {
+                json = data;
+            }
+        });
+        return json;
+    })();
+var neuTweetsGoliath = (function() {
+        var json = null;
+        $.ajax({
+            'async': false,
+            'global': false,
+            'url': "../SentimentCounts/goliathNeutralTweets.json",
+            'dataType': "json",
+            'success': function (data) {
+                json = data;
+            }
+        });
+        return json;
+    })();
+
+
+
 
 			function drawPieChart(id) {
 										var tabToAppend = fileNameByID+"_tab1";
@@ -791,6 +996,7 @@
 		 }
 		 	
 		 });
+
 		</script>
 		<script>window.jQuery || document.write('<script src="js/libs/jquery-1.7.2.min.js"><\/script>')</script>
 									<script defer src="js/plugins.js"></script>

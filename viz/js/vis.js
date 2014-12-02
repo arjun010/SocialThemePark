@@ -296,7 +296,7 @@ Bubbles = function() {
 
       for (var i =0; i<curRideTweets.length; i++){
         if(curRideTweets[i]['tweet'].toLowerCase().indexOf(id) > -1){
-          console.log(curRideTweets[i]['tweet']);
+          //console.log(curRideTweets[i]['tweet']);
           $('#'+key+'modal '+'#tweetsList').prepend('<tr class="tweet"><td>'+curRideTweets[i]['tweet']+'</td></tr>');
         }
       }
@@ -405,3 +405,295 @@ $(function() {
   $("#"+key+"modal "+"#book-title").html(text.name);
   return d3.csv("../../WordCounts/" + text.file, display);
 });
+
+var posTweetsSpaceMountain = (function() {
+        var json = null;
+        $.ajax({
+            'async': false,
+            'global': false,
+            'url': "../SentimentCounts/spacemountainPositiveTweets.json",
+            'dataType': "json",
+            'success': function (data) {
+                json = data;
+            }
+        });
+        return json;
+    })();
+var negTweetsSpaceMountain = (function() {
+        var json = null;
+        $.ajax({
+            'async': false,
+            'global': false,
+            'url': "../SentimentCounts/spacemountainNegativeTweets.json",
+            'dataType': "json",
+            'success': function (data) {
+                json = data;
+            }
+        });
+        return json;
+    })();
+var neuTweetsSpaceMountain = (function() {
+        var json = null;
+        $.ajax({
+            'async': false,
+            'global': false,
+            'url': "../SentimentCounts/spacemountainNeutralTweets.json",
+            'dataType': "json",
+            'success': function (data) {
+                json = data;
+            }
+        });
+        return json;
+    })();
+//hulk ride pos, neg, neutral tweets
+var posTweetsHulkRide = (function() {
+        var json = null;
+        $.ajax({
+            'async': false,
+            'global': false,
+            'url': "../SentimentCounts/hulkridePositiveTweets.json",
+            'dataType': "json",
+            'success': function (data) {
+                json = data;
+            }
+        });
+        return json;
+    })();
+var negTweetsHulkRide = (function() {
+        var json = null;
+        $.ajax({
+            'async': false,
+            'global': false,
+            'url': "../SentimentCounts/hulkrideNegativeTweets.json",
+            'dataType': "json",
+            'success': function (data) {
+                json = data;
+            }
+        });
+        return json;
+    })();
+var neuTweetsHulkRide = (function() {
+        var json = null;
+        $.ajax({
+            'async': false,
+            'global': false,
+            'url': "../SentimentCounts/hulkrideNeutralTweets.json",
+            'dataType': "json",
+            'success': function (data) {
+                json = data;
+            }
+        });
+        return json;
+    })();
+//batman pos, neg, neutral tweets
+var posTweetsBatman = (function() {
+        var json = null;
+        $.ajax({
+            'async': false,
+            'global': false,
+            'url': "../SentimentCounts/batmanPositiveTweets.json",
+            'dataType': "json",
+            'success': function (data) {
+                json = data;
+            }
+        });
+        return json;
+    })();
+var negTweetsBatman = (function() {
+        var json = null;
+        $.ajax({
+            'async': false,
+            'global': false,
+            'url': "../SentimentCounts/batmanNegativeTweets.json",
+            'dataType': "json",
+            'success': function (data) {
+                json = data;
+            }
+        });
+        return json;
+    })();
+var neuTweetsBatman = (function() {
+        var json = null;
+        $.ajax({
+            'async': false,
+            'global': false,
+            'url': "../SentimentCounts/batmanNeutralTweets.json",
+            'dataType': "json",
+            'success': function (data) {
+                json = data;
+            }
+        });
+        return json;
+    })();
+//seven dwarfs mine train pos, neg, neutral tweets
+var posTweetsSDMT = (function() {
+        var json = null;
+        $.ajax({
+            'async': false,
+            'global': false,
+            'url': "../SentimentCounts/sdmtPositiveTweets.json",
+            'dataType': "json",
+            'success': function (data) {
+                json = data;
+            }
+        });
+        return json;
+    })();
+var negTweetsSDMT = (function() {
+        var json = null;
+        $.ajax({
+            'async': false,
+            'global': false,
+            'url': "../SentimentCounts/sdmtNegativeTweets.json",
+            'dataType': "json",
+            'success': function (data) {
+                json = data;
+            }
+        });
+        return json;
+    })();
+var neuTweetsSDMT = (function() {
+        var json = null;
+        $.ajax({
+            'async': false,
+            'global': false,
+            'url': "../SentimentCounts/sdmtNeutralTweets.json",
+            'dataType': "json",
+            'success': function (data) {
+                json = data;
+            }
+        });
+        return json;
+    })();
+
+//goliath pos, neg, neutral tweets
+var posTweetsGoliath = (function() {
+        var json = null;
+        $.ajax({
+            'async': false,
+            'global': false,
+            'url': "../SentimentCounts/goliathPositiveTweets.json",
+            'dataType': "json",
+            'success': function (data) {
+                json = data;
+            }
+        });
+        return json;
+    })();
+var negTweetsGoliath = (function() {
+        var json = null;
+        $.ajax({
+            'async': false,
+            'global': false,
+            'url': "../SentimentCounts/goliathNegativeTweets.json",
+            'dataType': "json",
+            'success': function (data) {
+                json = data;
+            }
+        });
+        return json;
+    })();
+var neuTweetsGoliath = (function() {
+        var json = null;
+        $.ajax({
+            'async': false,
+            'global': false,
+            'url': "../SentimentCounts/goliathNeutralTweets.json",
+            'dataType': "json",
+            'success': function (data) {
+                json = data;
+            }
+        });
+        return json;
+    })();
+
+    function addPosTweets(curRide){
+    if(curRide=="hulkride"){
+      $("#sentimentList").empty();
+          for(var i =0; i<posTweetsHulkRide.length;i++){
+            $('#sentimentList').prepend('<p class="tweet">'+posTweetsHulkRide[i]['tweet']+'</p>');
+          } 
+    }else if(curRide=="batman"){
+      $("#sentimentList").empty();
+          for(var i =0; i<posTweetsBatman.length;i++){
+            $('#sentimentList').prepend('<p class="tweet">'+posTweetsBatman[i]['tweet']+'</p>');
+          }
+    }else if(curRide=="goliath"){
+      $("#sentimentList").empty();
+          for(var i =0; i<posTweetsGoliath.length;i++){
+            $('#sentimentList').prepend('<p class="tweet">'+posTweetsGoliath[i]['tweet']+'</p>');
+          }
+    }else if(curRide=="sevendwarfsminetrain"){
+      $("#sentimentList").empty();
+          for(var i =0; i<posTweetsSDMT.length;i++){
+            $('#sentimentList').prepend('<p class="tweet">'+posTweetsSDMT[i]['tweet']+'</p>');
+          }
+    }else if(curRide=="spacemountain"){
+      $("#sentimentList").empty();
+          for(var i =0; i<posTweetsSpaceMountain.length;i++){
+            $('#sentimentList').prepend('<p class="tweet">'+posTweetsSpaceMountain[i]['tweet']+'</p>');
+          }
+    }
+  }
+  function addNegTweets(curRide){
+    if(curRide=="hulkride"){
+      $("#sentimentList").empty();
+          for(var i =0; i<negTweetsHulkRide.length;i++){
+            $('#sentimentList').prepend('<p class="tweet">'+negTweetsHulkRide[i]['tweet']+'</p>');
+          } 
+    }else if(curRide=="batman"){
+      $("#sentimentList").empty();
+          for(var i =0; i<negTweetsBatman.length;i++){
+            $('#sentimentList').prepend('<p class="tweet">'+negTweetsBatman[i]['tweet']+'</p>');
+          }
+    }else if(curRide=="goliath"){
+      $("#sentimentList").empty();
+          for(var i =0; i<negTweetsGoliath.length;i++){
+            $('#sentimentList').prepend('<p class="tweet">'+negTweetsGoliath[i]['tweet']+'</p>');
+          }
+    }else if(curRide=="sevendwarfsminetrain"){
+      $("#sentimentList").empty();
+          for(var i =0; i<negTweetsSDMT.length;i++){
+            $('#sentimentList').prepend('<p class="tweet">'+negTweetsSDMT[i]['tweet']+'</p>');
+          }
+    }else if(curRide=="spacemountain"){
+      $("#sentimentList").empty();
+          for(var i =0; i<negTweetsSpaceMountain.length;i++){
+            $('#sentimentList').prepend('<p class="tweet">'+negTweetsSpaceMountain[i]['tweet']+'</p>');
+          }
+    }
+  }
+  function addNeutralTweets(curRide){
+    if(curRide=="hulkride"){
+      $("#sentimentList").empty();
+          for(var i =0; i<neuTweetsHulkRide.length;i++){
+            $('#sentimentList').prepend('<p class="tweet">'+neuTweetsHulkRide[i]['tweet']+'</p>');
+          } 
+    }else if(curRide=="batman"){
+      $("#sentimentList").empty();
+          for(var i =0; i<neuTweetsBatman.length;i++){
+            $('#sentimentList').prepend('<p class="tweet">'+neuTweetsBatman[i]['tweet']+'</p>');
+          }
+    }else if(curRide=="goliath"){
+      $("#sentimentList").empty();
+          for(var i =0; i<neuTweetsGoliath.length;i++){
+            $('#sentimentList').prepend('<p class="tweet">'+neuTweetsGoliath[i]['tweet']+'</p>');
+          }
+    }else if(curRide=="sevendwarfsminetrain"){
+      $("#sentimentList").empty();
+          for(var i =0; i<neuTweetsSDMT.length;i++){
+            $('#sentimentList').prepend('<p class="tweet">'+neuTweetsSDMT[i]['tweet']+'</p>');
+          }
+    }else if(curRide=="spacemountain"){
+      $("#sentimentList").empty();
+          for(var i =0; i<neuTweetsSpaceMountain.length;i++){
+            $('#sentimentList').prepend('<p class="tweet">'+neuTweetsSpaceMountain[i]['tweet']+'</p>');
+          }
+    }
+  }
+
+
+  $(".sentimentButton").on("click", function(){
+      console.log($(this).parent.find(".tab-pane"));
+      
+  });
