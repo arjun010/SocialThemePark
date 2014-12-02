@@ -123,55 +123,49 @@
 									 //        return d.data.sentiment;
 									 //    });
 
-									$('#'+tabToAppend).highcharts({
-								        chart: {
-								            plotBackgroundColor: null,
-								            plotBorderWidth: 0,
-								            plotShadow: false
-								        },
-								        title: {
-								            text: 'Browser<br>shares',
-								            align: 'center',
-								            verticalAlign: 'middle',
-								            y: 50
-								        },
-								        tooltip: {
-								            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-								        },
-								        plotOptions: {
-								            pie: {
-								                dataLabels: {
-								                    enabled: true,
-								                    distance: -50,
-								                    style: {
-								                        fontWeight: 'bold',
-								                        color: 'white',
-								                        textShadow: '0px 1px 2px black'
-								                    }
-								                },
-								                startAngle: -90,
-								                endAngle: 90,
-								                center: ['50%', '75%']
-								            }
-								        },
-								        series: [{
-								            type: 'pie',
-								            name: 'Browser share',
-								            innerSize: '50%',
-								            data: [
-								                ['Positive',   45.0],
-								                ['Neutral',       26.8],
-								                ['Negative',     6.2],
-								                {
-								                    name: 'Negative',
-								                    y: 0.7,
-								                    dataLabels: {
-								                        enabled: false
-								                    }
-								                }
-								            ]
-								        }]
-								    });
+									
+    $('#'+tabToAppend).highcharts({
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: 0,
+            plotShadow: false
+        },
+        title: {
+            text: 'Browser<br>shares',
+            align: 'center',
+            verticalAlign: 'middle',
+            y: 50
+        },
+        tooltip: {
+            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        plotOptions: {
+            pie: {
+                dataLabels: {
+                    enabled: true,
+                    distance: -50,
+                    style: {
+                        fontWeight: 'bold',
+                        color: 'white',
+                        textShadow: '0px 1px 2px black'
+                    }
+                },
+                startAngle: -90,
+                endAngle: 90,
+                center: ['50%', '75%']
+            }
+        },
+        series: [{
+            type: 'pie',
+            name: 'Browser share',
+            innerSize: '50%',
+            data: [
+                ['Positive',   150],
+                ['Neutral',       27],
+                ['Negative', 2]
+            ]
+        }]
+    });
 		 
 									</script>
 								</div>
