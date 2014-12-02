@@ -270,9 +270,9 @@ Bubbles = function() {
   };
   updateActive = function(id) {
      if($(".tweet").length > 0){
-            console.log("It exists");
               $(".tweet").remove();
           }
+    // node.classed("bubble-selected");
     node.classed("bubble-selected", function(d) {
       return id === idValue(d);
     });
@@ -709,10 +709,11 @@ var neuTweetsGoliath = (function() {
   }
 
 
-  $(".sentimentButton").on("click", function(){
+  $("button.sentimentButton").on("click", function(){
       currentSentiment = $(this).text();
       curRideID = ($(this).parent().parent().attr("id").split("_")[0]);
-
+      console.log(curRideID);
+      console.log(currentSentiment);
       if(currentSentiment == "Positive") {
           addPosTweets(curRideID);
           console.log(curRideID);
@@ -724,3 +725,4 @@ var neuTweetsGoliath = (function() {
       }
       
   });
+
