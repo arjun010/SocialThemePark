@@ -300,10 +300,10 @@ Bubbles = function() {
           $('#'+key+'modal '+'#tweetsList').prepend('<li class="tweet list-group-item">'+curRideTweets[i]['tweet']+'</li>');
         }
       }
-      return d3.select("#status").html("<h3>The word <span class=\"active\">" + id + "</span> is now active</h3>");
+      return $(".status").html("<h3>The word <span class=\"active\">" + id + "</span> is now active</h3>");
     } else {
       $(".tweet").remove();
-      return d3.select("#status").html("<h3>No word is active</h3>");
+      return $(".status").html("<h3>No word is active</h3>");
     }
   };
   mouseover = function(d) {
