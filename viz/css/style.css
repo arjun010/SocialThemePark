@@ -200,3 +200,21 @@ margin-top: 10px;
 .tweet.list-group-item {
   color:#888;
 }
+
+.mainBackgroundImage .sentimentButtons .btn-primary.positiveBtn {
+  background-color: #dff0d8;
+  color:#888;
+  border: 1px solid #ddd
+}
+
+.mainBackgroundImage .sentimentButtons .btn-primary.neuBtn {
+  background-color: #fcf8e3;
+  color:#8a6d3b;
+  border: 1px solid #ddd;
+}
+
+.mainBackgroundImage .sentimentButtons .btn-primary.negBtn {
+  background-color: #f2dede;
+  color:#a94442;
+  border: 1px solid #ddd;
+}
