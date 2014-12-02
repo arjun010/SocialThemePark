@@ -130,7 +130,7 @@ footer p {
   width:252px;
   height:198px;
   position: absolute;
-  bottom: 190px;
+  bottom: 10px;
   right: 340px;
 }
 
@@ -146,7 +146,7 @@ footer p {
   width:252px;
   height:198px;
   position: absolute;
-  top: 90px;
+  top: 0px;
   left: 60px;
 }
 .sentimentButtons { 
