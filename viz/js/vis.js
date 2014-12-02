@@ -609,6 +609,7 @@ var neuTweetsGoliath = (function() {
 
     function addPosTweets(curRide){
     currentRideTab = curRide+"_tab3";
+    console.log($(currentRideTab));
     if(curRide=="hulkride"){
       $(".sentimentList").empty();
           for(var i =0; i<posTweetsHulkRide.length;i++){
@@ -639,7 +640,6 @@ var neuTweetsGoliath = (function() {
   
   function addNegTweets(curRide){
     currentRideTab = curRide+"_tab3";
-    console.log(curRide);
     if(curRide=="hulkride"){
       $(".sentimentList").empty();
           for(var i =0; i<negTweetsHulkRide.length;i++){
@@ -647,6 +647,8 @@ var neuTweetsGoliath = (function() {
           } 
     }else if(curRide=="batman"){
       $(".sentimentList").empty();
+    console.log("batman neg");
+
           for(var i =0; i<negTweetsBatman.length;i++){
             $('#'+currentRideTab+' .sentimentList').prepend('<p class="tweet">'+negTweetsBatman[i]['tweet']+'</p>');
           }
@@ -678,6 +680,8 @@ var neuTweetsGoliath = (function() {
           } 
     }else if(curRide=="batman"){
       $(".sentimentList").empty();
+    console.log("batman neu");
+
           for(var i =0; i<neuTweetsBatman.length;i++){
             $('#'+currentRideTab+' .sentimentList').prepend('<p class="tweet">'+neuTweetsBatman[i]['tweet']+'</p>');
           }
@@ -709,7 +713,6 @@ var neuTweetsGoliath = (function() {
       } else if(currentSentiment == "Neutral") {
           addNeutralTweets(curRideID);
       } else if (currentSentiment == "Negative")  {
-          console.log("negative");
           addNegTweets(curRideID);
       }
       
