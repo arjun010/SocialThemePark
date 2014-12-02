@@ -608,92 +608,104 @@ var neuTweetsGoliath = (function() {
     })();
 
     function addPosTweets(curRide){
+    currentRideTab = curRide+"_tab3";
     if(curRide=="hulkride"){
-      $("#sentimentList").empty();
+      $(".sentimentList").empty();
           for(var i =0; i<posTweetsHulkRide.length;i++){
-            $('#sentimentList').prepend('<p class="tweet">'+posTweetsHulkRide[i]['tweet']+'</p>');
+            $('#'+currentRideTab+' .sentimentList').prepend('<p class="tweet">'+posTweetsHulkRide[i]['tweet']+'</p>');
           } 
     }else if(curRide=="batman"){
-      $("#sentimentList").empty();
+      $(".sentimentList").empty();
           for(var i =0; i<posTweetsBatman.length;i++){
-            $('#sentimentList').prepend('<p class="tweet">'+posTweetsBatman[i]['tweet']+'</p>');
+            $('#'+currentRideTab+' .sentimentList').prepend('<p class="tweet">'+posTweetsBatman[i]['tweet']+'</p>');
           }
     }else if(curRide=="goliath"){
-      $("#sentimentList").empty();
+      $(".sentimentList").empty();
           for(var i =0; i<posTweetsGoliath.length;i++){
-            $('#sentimentList').prepend('<p class="tweet">'+posTweetsGoliath[i]['tweet']+'</p>');
+            $('#'+currentRideTab+' .sentimentList').prepend('<p class="tweet">'+posTweetsGoliath[i]['tweet']+'</p>');
           }
     }else if(curRide=="sevendwarfsminetrain"){
-      $("#sentimentList").empty();
+      $(".sentimentList").empty();
           for(var i =0; i<posTweetsSDMT.length;i++){
-            $('#sentimentList').prepend('<p class="tweet">'+posTweetsSDMT[i]['tweet']+'</p>');
+            $('#'+currentRideTab+' .sentimentList').prepend('<p class="tweet">'+posTweetsSDMT[i]['tweet']+'</p>');
           }
     }else if(curRide=="spacemountain"){
-      $("#sentimentList").empty();
+      $(".sentimentList").empty();
           for(var i =0; i<posTweetsSpaceMountain.length;i++){
-            $('#sentimentList').prepend('<p class="tweet">'+posTweetsSpaceMountain[i]['tweet']+'</p>');
+            $('#'+currentRideTab+' .sentimentList').prepend('<p class="tweet">'+posTweetsSpaceMountain[i]['tweet']+'</p>');
           }
     }
   }
   function addNegTweets(curRide){
+    currentRideTab = curRide+"_tab3";
     if(curRide=="hulkride"){
-      $("#sentimentList").empty();
+      $(".sentimentList").empty();
           for(var i =0; i<negTweetsHulkRide.length;i++){
-            $('#sentimentList').prepend('<p class="tweet">'+negTweetsHulkRide[i]['tweet']+'</p>');
+            $('#'+currentRideTab+' .sentimentList').prepend('<p class="tweet">'+negTweetsHulkRide[i]['tweet']+'</p>');
           } 
     }else if(curRide=="batman"){
-      $("#sentimentList").empty();
+      $(".sentimentList").empty();
           for(var i =0; i<negTweetsBatman.length;i++){
-            $('#sentimentList').prepend('<p class="tweet">'+negTweetsBatman[i]['tweet']+'</p>');
+            $('#'+currentRideTab+' .sentimentList').prepend('<p class="tweet">'+negTweetsBatman[i]['tweet']+'</p>');
           }
     }else if(curRide=="goliath"){
-      $("#sentimentList").empty();
+      $(".sentimentList").empty();
           for(var i =0; i<negTweetsGoliath.length;i++){
-            $('#sentimentList').prepend('<p class="tweet">'+negTweetsGoliath[i]['tweet']+'</p>');
+            $('#'+currentRideTab+' .sentimentList').prepend('<p class="tweet">'+negTweetsGoliath[i]['tweet']+'</p>');
           }
     }else if(curRide=="sevendwarfsminetrain"){
-      $("#sentimentList").empty();
+      $(".sentimentList").empty();
           for(var i =0; i<negTweetsSDMT.length;i++){
-            $('#sentimentList').prepend('<p class="tweet">'+negTweetsSDMT[i]['tweet']+'</p>');
+            $('#'+currentRideTab+' .sentimentList').prepend('<p class="tweet">'+negTweetsSDMT[i]['tweet']+'</p>');
           }
     }else if(curRide=="spacemountain"){
-      $("#sentimentList").empty();
+      $(".sentimentList").empty();
           for(var i =0; i<negTweetsSpaceMountain.length;i++){
-            $('#sentimentList').prepend('<p class="tweet">'+negTweetsSpaceMountain[i]['tweet']+'</p>');
+            $('#'+currentRideTab+' .sentimentList').prepend('<p class="tweet">'+negTweetsSpaceMountain[i]['tweet']+'</p>');
           }
     }
   }
   function addNeutralTweets(curRide){
+    currentRideTab = curRide+"_tab3";
     if(curRide=="hulkride"){
-      $("#sentimentList").empty();
+      $(".sentimentList").empty();
           for(var i =0; i<neuTweetsHulkRide.length;i++){
-            $('#sentimentList').prepend('<p class="tweet">'+neuTweetsHulkRide[i]['tweet']+'</p>');
+            $('#'+currentRideTab+' .sentimentList').prepend('<p class="tweet">'+neuTweetsHulkRide[i]['tweet']+'</p>');
           } 
     }else if(curRide=="batman"){
-      $("#sentimentList").empty();
+      $(".sentimentList").empty();
           for(var i =0; i<neuTweetsBatman.length;i++){
-            $('#sentimentList').prepend('<p class="tweet">'+neuTweetsBatman[i]['tweet']+'</p>');
+            $('#'+currentRideTab+' .sentimentList').prepend('<p class="tweet">'+neuTweetsBatman[i]['tweet']+'</p>');
           }
     }else if(curRide=="goliath"){
-      $("#sentimentList").empty();
+      $(".sentimentList").empty();
           for(var i =0; i<neuTweetsGoliath.length;i++){
-            $('#sentimentList').prepend('<p class="tweet">'+neuTweetsGoliath[i]['tweet']+'</p>');
+            $('#'+currentRideTab+' .sentimentList').prepend('<p class="tweet">'+neuTweetsGoliath[i]['tweet']+'</p>');
           }
     }else if(curRide=="sevendwarfsminetrain"){
-      $("#sentimentList").empty();
+      $(".sentimentList").empty();
           for(var i =0; i<neuTweetsSDMT.length;i++){
-            $('#sentimentList').prepend('<p class="tweet">'+neuTweetsSDMT[i]['tweet']+'</p>');
+            $('#'+currentRideTab+' .sentimentList').prepend('<p class="tweet">'+neuTweetsSDMT[i]['tweet']+'</p>');
           }
     }else if(curRide=="spacemountain"){
-      $("#sentimentList").empty();
+      $(".sentimentList").empty();
           for(var i =0; i<neuTweetsSpaceMountain.length;i++){
-            $('#sentimentList').prepend('<p class="tweet">'+neuTweetsSpaceMountain[i]['tweet']+'</p>');
+            $('#'+currentRideTab+' .sentimentList').prepend('<p class="tweet">'+neuTweetsSpaceMountain[i]['tweet']+'</p>');
           }
     }
   }
 
 
   $(".sentimentButton").on("click", function(){
-      console.log($(this).parent.find(".tab-pane"));
+      currentSentiment = $(this).text();
+      curRideID = ($(this).parent().parent().attr("id").split("_")[0]);
+
+      if(currentSentiment == "Positive") {
+          addPosTweets(curRideID);
+      } else if(currentSentiment == "Neutral") {
+          addNeutralTweets(curRideID);
+      } else {
+          addNegTweets(curRideID);
+      }
       
   });
