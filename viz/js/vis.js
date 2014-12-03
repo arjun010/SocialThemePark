@@ -100,8 +100,8 @@ var tweetsHulkRide = (function() {
 root = typeof exports !== "undefined" && exports !== null ? exports : this;
 Bubbles = function() {
   var chart, clear, click, collide, collisionPadding, connectEvents, data, force, gravity, hashchange, height, idValue, jitter, label, margin, maxRadius, minCollisionRadius, mouseout, mouseover, node, rScale, rValue, textValue, tick, transformData, update, updateActive, updateLabels, updateNodes, width;
-  width = 700;
-  height = 700;
+  width = 1150;
+  height = 900;
   data = [];
   node = null;
   label = null;
@@ -300,7 +300,7 @@ Bubbles = function() {
           $('#'+key+'modal '+'#tweetsList').prepend('<li class="tweet list-group-item">'+curRideTweets[i]['tweet']+'</li>');
         }
       }
-      return $(".status").html("<h3>The word <span class=\"active\">" + id + "</span> is now active</h3>");
+      return $(".status").html("<h3>Showing tweets with word <span class=\"active\">" + id + "</span> </h3>");
     } else {
       $(".tweet").remove();
       return $(".status").html("<h3>No word is active</h3>");
