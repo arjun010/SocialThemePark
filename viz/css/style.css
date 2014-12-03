@@ -111,43 +111,43 @@ footer p {
 }
 
 .hulkrideImage { 
-  width:252px;
-  height:198px;
+  width:330px;
+  height:250px;
   position: absolute;
-  bottom: 190px;
-  right: 340px;
+  top: 30px;
+  right: 66px;
 }
 
 .batmanImage {
   width:430px;
   height:225px;
   position: absolute;
-  bottom: 100px;
-  right:58px;
+  bottom: 110px;
+  right:36px;
 }
 
 .goliathImage { 
-  width:252px;
-  height:198px;
+  width:352px;
+  height:305px;
   position: absolute;
-  bottom: 10px;
-  right: 340px;
+  top: 150px;
+  left: 30px;
 }
 
 .spacemountainImage{
   width:252px;
   height:198px;
   position: absolute;
-  bottom: 60px;
-  left: 60px;
+  bottom: 70px;
+  left: 75px;
 }
 
 .sevenTrainImage { 
   width:252px;
   height:198px;
   position: absolute;
-  top: 0px;
-  left: 60px;
+  top: 30px;
+  left: 245px;
 }
 .sentimentButtons { 
   text-align: center;
