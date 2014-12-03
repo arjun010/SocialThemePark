@@ -8,7 +8,7 @@ api = twitter.Api(consumer_key='CPoIzcJdlC9w48HJLASiCWfIm',
                       access_token_key='524026726-PFL8kV3zUPpPZqRNB1J1xAZSUOv0JNfA6ZoPaL2V',
                       access_token_secret='3CQxz91tTSrqb2DN0OGDewlAzeqxMxVwCkbga7ayQBEmt')
 
-search = api.GetSearch(term='goliath six flags',result_type='mixed', lang='en', count=200, since_id='539210331294543872')
+search = api.GetSearch(term='goliath six flags',result_type='mixed', lang='en', count=200, since_id='539277333383741440')
 tempArr = []
 alreadySeen = []
 jsonTweets = []

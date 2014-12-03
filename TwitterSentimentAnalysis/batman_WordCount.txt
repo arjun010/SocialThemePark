@@ -1,4 +1,3 @@
-new : 5
 dark : 1
 old : 1
 awesome : 2
@@ -7,7 +6,7 @@ fun : 3
 fun : 3
 crazy : 1
 scared : 2
-liked : 2
+liked : 3
 stuck : 2
 stuck : 2
 convinced : 1
@@ -38,12 +37,9 @@ kind : 1
 reunited : 1
 revolutionary : 2
 free : 2
-new : 5
 better : 1
 rigorous : 1
 brutal : 1
-new : 5
-new : 5
 cool : 1
 revolutionary : 2
 free : 2
@@ -53,11 +49,13 @@ pretty : 2
 sure : 2
 pretty : 2
 sure : 2
-new : 5
 experienced : 1
 still : 5
 real : 1
 bought : 2
 mean : 1
 closed : 1
-liked : 2
+liked : 3
+large : 2
+large : 2
+liked : 3

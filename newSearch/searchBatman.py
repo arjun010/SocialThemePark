@@ -7,7 +7,7 @@ api = twitter.Api(consumer_key='CPoIzcJdlC9w48HJLASiCWfIm',
                       access_token_key='524026726-PFL8kV3zUPpPZqRNB1J1xAZSUOv0JNfA6ZoPaL2V',
                       access_token_secret='3CQxz91tTSrqb2DN0OGDewlAzeqxMxVwCkbga7ayQBEmt')
 
-search = api.GetSearch(term='batman six flags', lang='en', count=200, since_id='539223618002382848')
+search = api.GetSearch(term='batman six flags', lang='en', count=200, since_id='539537933326618624')
 tempArr = []
 alreadySeen = []
 jsonTweets = []

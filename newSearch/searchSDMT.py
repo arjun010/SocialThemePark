@@ -8,7 +8,7 @@ api = twitter.Api(consumer_key='CPoIzcJdlC9w48HJLASiCWfIm',
                       access_token_key='524026726-PFL8kV3zUPpPZqRNB1J1xAZSUOv0JNfA6ZoPaL2V',
                       access_token_secret='3CQxz91tTSrqb2DN0OGDewlAzeqxMxVwCkbga7ayQBEmt')
 
-search = api.GetSearch(term='seven dwarfs mine train',result_type='mixed', lang='en', count=200, since_id='539094100080095232')
+search = api.GetSearch(term='seven dwarfs mine train',result_type='mixed', lang='en', count=200, since_id='539509347270021120')
 tempArr = []
 alreadySeen = []
 jsonTweets = []

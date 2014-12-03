@@ -1,9 +1,7 @@
 name,count
-fire,60
-fast,2
+fast,3
 good,2
 love,5
-new,23
 nice,3
 cut,1
 small,15
@@ -13,7 +11,7 @@ excited,1
 first,7
 awesome,2
 alone,1
-big,1
+big,2
 cool,4
 better,1
 ridden,2
@@ -56,3 +54,7 @@ complete,1
 dark,1
 significant,1
 inspired,1
+huge,4
+released,6
+available,1
+right,1

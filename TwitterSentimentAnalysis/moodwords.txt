@@ -1172,7 +1172,6 @@ fine
 finicky
 finished
 fired
-fire
 firm
 first
 first-class
@@ -2102,7 +2101,6 @@ nervous
 nettled
 neurotic
 neutral
-new
 nice
 nifty
 niggardly

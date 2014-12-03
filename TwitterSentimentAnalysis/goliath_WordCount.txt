@@ -1,5 +1,3 @@
-new : 7
-new : 7
 giant : 4
 first : 1
 closed : 2
@@ -16,13 +14,8 @@ okay : 1
 jealous : 1
 bad : 1
 liked : 4
-new : 7
 big : 2
 chicken : 1
-new : 7
-new : 7
-new : 7
-new : 7
 fear : 1
 giant : 4
 sure : 1
